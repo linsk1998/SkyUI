@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Accordion</title>
+<link rel="stylesheet" type="text/css" href="../../common.css"/>
+</head>
+
+<body>
+	<div class="top-tools">
+		<a href="#method"><img src="../../../icons/famfamfam/bullet_green.png">方法</a>
+		<a href="#property"><img src="../../../icons/famfamfam/bullet_black.png">属性</a>
+		<a href="#event"><img src="../../../icons/famfamfam/bullet_feed.png">事件</a>
+	</div>
+	<h1>Class Accordion</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky.layout</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../../../skyui/js/accordion.js">accordion.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>Accordion</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td><a href="../Component.html">Component</a></td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：Accordion</b>(Object options)</h3>
+					<details>
+						<summary>options详细属性</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>options.height</td>
+								<td>Integer</td>
+								<td>NaN</td>
+								<td>高度，正数表示固定高度，负数或零表示100%减像素</td>
+							</tr>
+							<tr>
+								<td>options.panels</td>
+								<td>Array</td>
+								<td>[]</td>
+								<td>初始面板，配置参考addPanel方法</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>Accordion</td>
+			</tr>
+			<tr id="addPanel">
+				<td>
+					<h3><b>addPanel</b>(String title)</h3>
+					<p>标题</p>
+					<h3><b>addPanel</b>(Object options)</h3>
+					<p>options详细属性参考<a href="../Panel.html#construct">Panel构造函数</a></p>
+				</td>
+				<td>Accordion</td>
+			</tr>
+			<tr id="expand">
+				<td>
+					<h3><b>expand</b>(Integer index)</h3>
+					<p>展开某一项</p>
+				</td>
+				<td>Accordion</td>
+			</tr>
+			<tr id="collapse">
+				<td>
+					<h3><b>collapse</b>(Integer index)</h3>
+					<p>闭合某一项</p>
+				</td>
+				<td>Accordion</td>
+			</tr>
+			<tr id="toggle">
+				<td>
+					<h3><b>toggle</b>(Integer index)</h3>
+					<p>切换某一项闭合或展开</p>
+				</td>
+				<td>Accordion</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr id="renderTo">
+				<td>
+					<h3><b>renderTo</b>(HTMLElement obj):void</h3>
+					<p>将一个组件添加到一个div中</p>
+				</td>
+				<td><a href="Component.html#renderTo">Component</a></td>
+			</tr>
+			<tr id="addListener">
+				<td>
+					<b>addListener</b>(String event, Function callback, Boolean before):void
+					<p>添加监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#addListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="on">
+				<td>
+					<b>on</b>(String event, Function callback):void
+					<p>添加事件发生前的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#on">EventDispatcher</a></td>
+			</tr>
+			<tr id="after">
+				<td>
+					<b>after</b>(String event, Function callback):void
+					<p>添加事件发生后的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#after">EventDispatcher</a></td>
+			</tr>
+			<tr id="removeListener">
+				<td>
+					<b>removeListener</b>(String event, Function callback):void
+					<p>移除监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#removeListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchEvent">
+				<td>
+					<b>dispatchEvent</b>(String event, Boolean before, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchOnEvent">
+				<td>
+					<b>dispatchOnEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchOnEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchAfterEvent">
+				<td>
+					<b>dispatchAfterEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchAfterEvent">EventDispatcher</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="property">属性</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>属性</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="panels">
+				<td>
+					<h3><b>panels</b>:Array&lt;<a href="../Panel.html">Panel</a>&gt;</h3>
+					<p>切换某一项闭合或展开</p>
+				</td>
+				<td>Accordion</td>
+			</tr>
+		</tbody>
+		<tfoot class="inherit">
+			<tr id="dom">
+				<td>
+					<h3><b>dom</b>:HTMLElement</h3>
+					<p>这个组件的节点元素</p>
+				</td>
+				<td><a href="Component.html#dom">Component</a></td>
+			</tr>
+			<tr id="container">
+				<td>
+					<h3><b>container</b>:<a href="Container.html">Container</a></h3>
+					<p>这个组件所在容器</p>
+				</td>
+				<td><a href="Component.html#container">Component</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="event">事件</h2>
+	<table class="member-table">
+		<tr>
+			<th>事件</th>
+			<td>定义于</td>
+		</tr>
+		<tr id="expand">
+			<td>
+				<h3><b>expand</b></h3>
+				<p>展开事件</p>
+			</td>
+			<td>Accordion</td>
+		</tr>
+		<tr id="collapse">
+			<td>
+				<h3><b>collapse</b></h3>
+				<p>合并事件</p>
+			</td>
+			<td>Accordion</td>
+		</tr>
+		<tr id="toggle">
+			<td>
+				<h3><b>toggle</b></h3>
+				<p>切换事件</p>
+			</td>
+			<td>Accordion</td>
+		</tr>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../../common.js"></script>

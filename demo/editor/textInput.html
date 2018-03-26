@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+</head>
+
+<body>
+<br/>
+<br/>
+<br/>
+<table width="200">
+	<tr>
+		<td><div class="s-textBox"><input value="text2"/></div></td>
+	</tr>
+	<tr>
+		<td><div class="s-textBox s-invalid"><div class="s-tooltip">提示文字</div><input value="text2"/></div></td>
+	</tr>
+	<tr>
+		<td><div class="s-textBox s-disabled"><input value="text2"/></div></td>
+	</tr>
+	<tr>
+		<td id="text1"></td>
+	</tr>
+	<tr>
+		<td><input value="text2" name="ddd" id="text2"/></td>
+	</tr>
+	<tr>
+		<td id="text3"></td>
+	</tr>
+</table>
+<button type="button" onclick="alert(textBox1.getValue())">获取值</button>
+<button type="button" onclick="alert(textBox3.validate())">验证</button>
+<button type="button" onclick="alert(textBox3.isValid())">验证结果</button>
+
+
+</body>
+</html>
+<script>
+	var textBox1=new sky.editor.TextInput("text1",{'height':30});
+	var textBox2=new sky.editor.TextInput("text2",{'required':true,'pattern':/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,'title':"邮箱格式必填"});
+	var textBox3=new sky.editor.TextInput("text3",{'validator':userNameValidator,'title':"用户名不为空且不能重复"});
+	
+	function userNameValidator(){
+		var editor=this;
+		var val=this.getValue();
+		if(val){
+			setTimeout(function(){//模拟异步校验
+				if(val.length<6){//校验失败
+					editor.markInvalid("用户名太短了");
+				}
+			},2000);
+			return true;
+		}
+	}
+</script>

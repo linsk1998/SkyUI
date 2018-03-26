@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DatePicker</title>
+<link rel="stylesheet" type="text/css" href="../../common.css"/>
+</head>
+
+<body>
+	<div class="top-tools">
+		<a href="#method"><img src="../../../icons/famfamfam/bullet_green.png">方法</a>
+		<a href="#property"><img src="../../../icons/famfamfam/bullet_black.png">属性</a>
+	</div>
+	<h1>Class DatePicker</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky.picker</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../../../skyui/js/picker.js">picker.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>DatePicker</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td><a href="../SelectPicker.html">SelectPicker</a></td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：DatePicker</b>(Date date)</h3>
+					<p>参数为日期格式</p>
+				</td>
+				<td>DatePicker</td>
+			</tr>
+			<tr id="loadDate">
+				<td>
+					<h3><b>loadDate</b>(Date date)</h3>
+					<p>日历翻到date所在的月</p>
+				</td>
+				<td>DatePicker</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr id="show">
+				<td>
+					<h3><b>show</b>(Integer left,Integer top):void</h3>
+					<p>显示一个选择框</p>
+				</td>
+				<td><a href="../SelectPicker.html">SelectPicker</a></td>
+			</tr>
+			<tr id="close">
+				<td>
+					<h3><b>close</b>():void</h3>
+					<p>关闭一个选择框</p>
+				</td>
+				<td><a href="../SelectPicker.html">SelectPicker</a></td>
+			</tr>
+			<tr id="addListener">
+				<td>
+					<b>addListener</b>(String event, Function callback, Boolean before):void
+					<p>添加监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#addListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="on">
+				<td>
+					<b>on</b>(String event, Function callback):void
+					<p>添加事件发生前的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#on">EventDispatcher</a></td>
+			</tr>
+			<tr id="after">
+				<td>
+					<b>after</b>(String event, Function callback):void
+					<p>添加事件发生后的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#after">EventDispatcher</a></td>
+			</tr>
+			<tr id="removeListener">
+				<td>
+					<b>removeListener</b>(String event, Function callback):void
+					<p>移除监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#removeListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchEvent">
+				<td>
+					<b>dispatchEvent</b>(String event, Boolean before, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchOnEvent">
+				<td>
+					<b>dispatchOnEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchOnEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchAfterEvent">
+				<td>
+					<b>dispatchAfterEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchAfterEvent">EventDispatcher</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="property">属性</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>属性</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="value">
+				<td>
+					<h3><b>value</b>:Date</h3>
+					<p>获取选中的日期</p>
+				</td>
+				<td>DatePicker</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr id="dom">
+				<td>
+					<h3><b>dom</b>:HTMLElement</h3>
+					<p>节点元素</p>
+				</td>
+				<td><a href="../SelectPicker.html">SelectPicker</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="event">事件</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>事件</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<h3><b>pick</b></h3>
+					<p>选择日期事件</p>
+				</td>
+				<td>DatePicker</td>
+			</tr>
+			<tr>
+				<td>
+					<h3><b>confirm</b></h3>
+					<p>点击确定事件</p>
+				</td>
+				<td>DatePicker</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>
+					<h3><b>close</b></h3>
+					<p>关闭弹框事件</p>
+				</td>
+				<td><a href="../SelectPicker.html">SelectPicker</a></td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../../common.js"></script>

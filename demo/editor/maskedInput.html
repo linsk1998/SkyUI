@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+</head>
+
+<body>
+<div style="width:200px;" id="text1">
+</div>
+<input value="获取值" onclick="alert(text1.getValue())" type="button"/>
+<input value="设置值" onclick="text1.setValue('asd-333-111')" type="button"/>
+<input value="设置值" onclick="text1.setValue('asdf-333-111-66')" type="button"/>
+</body>
+</html>
+<script>
+	var text1=new sky.editor.MaskedInput("text1",{'height':20,'pattern':/([^-]{4})-([^-]+)-(\d{3,6})-([^-]{2,})/});
+</script>

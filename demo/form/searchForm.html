@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<title>无标题文档</title>
+	<style>
+		html,body{ height:100%;}
+	</style>
+</head>
+<body>
+<div class="s-toolbar">
+	<div class="s-dialog-east" id="east">
+		
+	</div>
+	<div class="s-toolbar-item" onclick="alert(this.innerHTML)">增加</div><div class="s-toolbar-item"><img src="../../icons/famfamfam/pencil.png"/>编辑</div><div class="s-bar-separator"></div><div class="s-toolbar-item">删除</div>
+</div>
+</body>
+</html>
+<script>
+var form1=new sky.form.SearchForm();
+form1.renderTo("east");
+form1.onSubmit=function(){
+	alert(1);
+};
+</script>

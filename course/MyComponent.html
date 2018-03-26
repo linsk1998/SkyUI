@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义组件</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New,"微软雅黑"; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.string{ color:green; font-weight:bold;}
+		.comment{ color:gray; font-style:italic;}
+		.variable{ color:#607; font-weight:bold;}
+		.dom-object{ color:#909}
+		.member{ color:#a70;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<pre><span class="comment">//声明一个类</span>
+<span class="reserved">var</span> <span class="variable">MyComponent</span>=<span class="reserved">function</span>(){
+	sky.Component.<span class="member">call</span>(<span class="reserved">this</span>);<span class="comment">//继承Component</span>
+	<span class="comment">//dom属性</span>
+	<span class="reserved">this</span>.dom=<span class="dom-object">document</span>.<span class="member">createElement</span>(<span class="string">"div"</span>);
+	<span class="comment">//自定义属性</span>
+	<span class="reserved">this</span>.textNode=<span class="dom-object">document</span>.<span class="member">createTextNode</span>(<span class="string">"自定义组件"</span>);
+	<span class="reserved">this</span>.dom.<span class="member">appendChild</span>(<span class="reserved">this</span>.textNode);
+	<span class="comment">//重写renderTo方法</span>
+	<span class="reserved">this</span>.renderTo=<span class="reserved">function</span>(<span class="variable">wrap</span>){
+		<span class="variable">wrap</span>=<span class="variable">Sky</span>(wrap);//这样可以传入id值
+		wrap.<span class="member">appendChild</span>(<span class="reserved">this</span>.dom);
+		
+		<span class="comment">//如果是通过container.add方法添加的，可以通过this.container读到container相关信息</span>
+		<span class="reserved">if</span>(<span class="reserved">this</span>.container){
+			<span class="comment">//然后这里就可以做一些和container有关的操作，比如监听container的大小变化</span>
+		}
+	};
+	<span class="comment">//重写remove方法</span>
+	<span class="reserved">this</span>.remove=<span class="reserved">function</span>(){
+		<span class="reserved">this</span>.dom.<span class="member">parentNode</span>.<span class="member">removeChild</span>(<span class="reserved">this</span>.dom);
+		<span class="reserved">if</span>(<span class="reserved">this</span>.container){
+			<span class="comment">//如果是通过container.add方法添加的，可以通过this.container读到container相关信息</span>
+		}
+	};
+	<span class="comment">//自定义方法</span>
+	<span class="reserved">this</span>.setText=<span class="reserved">function</span>(<span class="variable">text</span>){
+		<span class="reserved">this</span>.textNode.<span class="member">data</span>=<span class="variable">text</span>;
+	};
+};</pre>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+<style>
+</style>
+</head>
+
+<body>
+<table width="400" >
+	<tr>
+		<th width="80">用户名</th>
+		<td><input value="asd" id="textBox" type="text"/></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>用户名</th>
+		<td><input value="asd" id="textBox2" type="text"/></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>用户名</th>
+		<td><input id="checkBox" type="checkBox"/></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>用户名</th>
+		<td><div id="checkBox2"></div></td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<th>用户名</th>
+		<td><input id="dateInput" type="text"/></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="验证" onclick="alert(form1.validate())"/>
+<input type="button" value="提交" onclick="alert(form1.buildQuery())"/>
+</body>
+</html>
+<script>
+var textBox=new sky.editor.TextInput("textBox");
+var textBox2=new sky.editor.TextInput("textBox2");
+var checkBox=new sky.editor.CheckBox("checkBox");
+var checkBox2=new sky.editor.CheckBox("checkBox2");
+var dateInput=new sky.editor.DateInput("dateInput");
+
+var form1=new sky.Form();
+form1.addField("textBox",textBox);
+form1.addField("textBox2",textBox2);
+form1.addField("checkBox",checkBox);
+form1.addField("checkBox2",checkBox2);
+form1.addField("dateInput",dateInput);
+form1.validate();
+</script>

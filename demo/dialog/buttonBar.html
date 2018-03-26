@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="buttonBar" style="margin:20px; width:200px; border:1px solid #CCC;">asd
+</div>
+<div id="buttonBar2" style="margin:20px; width:200px; border:1px solid #CCC;">asd
+</div>
+<div id="buttonBar3" style="margin:20px; width:200px; border:1px solid #CCC;">asd
+</div>
+<input type="button" value="弹窗" onclick="dl.show();"/>
+</body>
+</html>
+<script>
+new sky.ButtonBar({'btns':[{'label':'按钮'},{'label':'按钮'}]}).renderTo("buttonBar");
+new sky.ButtonBar({'btns':[{'label':'按钮'},{'label':'按钮'}],'align':'center'}).renderTo("buttonBar2");
+new sky.ButtonBar({'btns':[{'label':'按钮'},{'label':'按钮'}],'align':'left'}).renderTo("buttonBar3");
+
+var dl=sky.Dialog({'title':"ssss",'buttonBar':{'btns':[{'label':'按钮'},{'label':'按钮'}],'align':'left'}});
+</script>

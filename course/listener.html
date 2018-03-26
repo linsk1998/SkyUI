@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义事件</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New,"微软雅黑"; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.string{ color:green; font-weight:bold;}
+		.comment{ color:gray; font-style:italic;}
+		.variable{ color:#607; font-weight:bold;}
+		.dom-object{ color:#909}
+		.member{ color:#a70;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<p>继承sky.events.EventDispatcher就可以有自定义事件了</p>
+<p>skyui中有很多类都继承到EventDispatcher类</p>
+<pre><span class="reserved">var</span> <span class="variable">xxx</span>=<span class="reserved">new</span> <span class="variable">XXXX</span>();<span class="comment">//XXXX这个类是继承EventDispatcher的</span>
+<span class="variable">xxx</span>.<span class="member">on</span>(<span class="string">'select'</span>,<span class="reserved">function</span>(){<span class="comment">//事件开始时响应</span>
+	<span class="comment">//这里是你的代码</span>
+	<span class="reserved">return</span> <span class="reserved">false</span>;<span class="comment">//可以阻止事件</span>
+});
+<span class="variable">xxx</span>.<span class="member">after</span>(<span class="string">'select'</span>,<span class="reserved">function</span>(){<span class="comment">//事件结束时响应</span>
+	<span class="comment">//这里是你的代码</span>
+});
+
+<span class="comment">//下面是分发事件的例子</span>
+<span class="reserved">if</span>(<span class="variable">xxx</span>.<span class="member">dispatchOnEvent</span>(<span class="string">'select'</span>)){<span class="comment">//分发开始时的事件</span>
+	<span class="variable">xxx</span>.<span class="member">dispatchAfterEvent</span>(<span class="string">'select'</span>);<span class="comment">//分发结束时的事件</span>
+}<span class="comment">//在if里面，如果有return false就不会分发结束的事件了</span></pre>
+<p><a href="../demo/general/listener.html">更多例子</a></p>
+</body>
+</html>

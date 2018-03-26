@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+</head>
+
+<body>
+<table width="200">
+	<tr>
+		<td id="text1"></td>
+	</tr>
+</table>
+<button type="button" onclick="alert(text1.getValue())">获取值</button>
+<button type="button" onclick="alert(text1.validate())">验证</button>
+</body>
+</html>
+<script>
+sky.editor.FontInput=function(element,options){
+	var $=this;
+	var conf={
+		'value':null,
+		'required':false,
+		'blankText':"未填写..",
+		'readOnly':false
+	};
+	conf=Sky.extend(conf,options);
+	sky.editor.PopupInput.call(this,element,conf);//继承PopupInput
+	Sky.addClass( this.addon,"fa");
+	this.addon.innerHTML='&#xf031;';
+	var picker=new sky.picker.FontPicker();
+	$.on('click',function(){
+		$.isEditing=true;
+		var left=Sky.getPageLeft($.dom);
+		var top=Sky.getPageTop($.dom)+$.dom.offsetHeight;
+		picker.show(left,top);
+	});
+	picker.afterPick=function(val){
+		$.setValue(val);
+	};
+	picker.onClose=function(){
+		$.isEditing=false;
+	};
+};
+var text1=new sky.editor.FontInput("text1");
+</script>

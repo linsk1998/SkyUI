@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基础知识</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin-top:0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.comment{ color:green;}
+	</style>
+</head>
+<body>
+<p>声明类</p>
+<pre><span class="reserved">function</span> Animal(){
+	<span class="reserved">this</span>.name="大毛";
+	<span class="reserved">this</span>.say=<span class="reserved">function</span>(){
+		alert("啊啊啊啊啊");
+	};
+	<span class="reserved">this</span>.sleep=<span class="reserved">function</span>(){
+		alert("zｚＺ");
+	};
+}</pre>
+<p>使用类</p>
+<pre><span class="reserved">var</span> animal=<span class="reserved">new</span> Animal();
+animal.say();
+animal.sleep();</pre>
+<p>继承类</p>
+<pre><span class="reserved">function</span> Cat(){
+	Animal.call(<span class="reserved">this</span>);//继承Animal
+	<span class="reserved">this</span>.say=function(){
+		alert("喵");
+	};
+}</pre>
+<p>使用类</p>
+<pre><span class="reserved">var</span> cat=<span class="reserved">new</span> Cat();
+cat.say();
+cat.sleep();</pre>
+</body>
+</html>

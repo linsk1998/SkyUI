@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基础知识</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin-top:0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.comment{ color:green;}
+	</style>
+</head>
+<body>
+<p>本文来源<a href="http://www.cnblogs.com/wmmang-blog/p/4057745.html" target="_blank">http://www.cnblogs.com/wmmang-blog/p/4057745.html</a></p>
+<p><b>1)创建节点：</b>除了可以使用createElement创建元素，也可以使用createTextNode创建文本节点.</p>
+<p>document.body指向的是&lt;body&gt;元素;document.documentElement则指向&lt;html&gt;元素</p>
+<pre><span class="comment">//创建节点</span>
+<span class="reserved">var</span> createNode = document.createElement("div");
+<span class="reserved">var</span> createTextNode = document.createTextNode("hello world");
+createNode.appendChild(createTextNode);
+document.body.appendChild(createNode);
+document.documentElement.appendChild(createNode);</pre>
+<p><b>2)插入节点：</b>可以使用appendChild，insertBefore，insertBefore接收两个参数，第一个是插入的节点，第二个是参照节点，如insertBefore(a,b)，则a会插入在b的前面</p>
+<pre><span class="comment">//插入节点</span>
+<span class="reserved">var</span> createNode = document.createElement("div");
+<span class="reserved">var</span> createTextNode = document.createTextNode("hello world");
+createNode.appendChild(createTextNode);
+<span class="reserved">var</span> div1 = document.getElementById("div1");
+document.body.insertBefore(createNode,div1);</pre>
+<p><b>3)删除元素</b>，removeChild返回的节点是删除的元素，被删除的元素仍然存在，但document中已经没有他们的位置了。</p>
+<pre><span class="comment">//删除元素</span>
+<span class="reserved">var</span> removeChild = document.body.removeChild(div1);</pre>
+<p><b>4)节点属性：</b></p>
+<ul>
+	<li>firstChild:第一个子节点</li>
+	<li>lastChild:最后一个子节点</li>
+	<li>childNodes:子节点集合，获取其中子节点可以someNode.childNodes[index]</li>
+	<li>nextSibling:下一个兄弟节点</li>
+	<li>previousSibling：上一个兄弟节点</li>
+	<li>parentNode：父节点</li>
+</ul>
+<pre>&lt;ul id=&quot;ul&quot;&gt;&lt;li&gt;sdsssssss&lt;/li&gt;&lt;li&gt;qqqq&lt;/li&gt;&lt;li&gt;wwww&lt;/li&gt;&lt;li&gt;eeee&lt;/li&gt;&lt;/ul&gt;</pre>
+<pre><span class="comment">//节点属性</span>
+<span class="reserved">var</span> ul = document.getElementById("ul");
+<span class="reserved">var</span> firstChild = ul.firstChild;
+console.log(firstChild.innerHTML);
+<span class="reserved">var</span> lastChild = ul.lastChild;
+console.log(lastChild.innerHTML);
+<span class="reserved">var</span> length = ul.childNodes.length;
+console.log(length);
+
+<span class="reserved">var</span> secondChild = ul.childNodes.item(1);
+console.log(secondChild.innerHTML);
+
+<span class="reserved">var</span> forthChild = ul.childNodes.item(2).nextSibling;
+console.log(forthChild.innerHTML);
+
+<span class="reserved">var</span> thridChild = forthChild.previousSibling;
+console.log(thridChild.innerHTML);
+
+<span class="reserved">var</span> parentNode = forthChild.parentNode;
+console.log(parentNode.innerHTML);</pre>
+<p><b>5)样式属性</b>，className是属性节点的css样式类名称，style属性是节点行内样式</p>
+<pre><span class="comment">//样式属性</span>
+<span class="reserved">var</span> ul = document.getElementById("ul");
+ul.className="list-group";
+ul.style.display="none";</pre>
+<p><b>6) 文档片段</b>，好处在于减少dom的渲染次数，可以优化性能。</p>
+<pre><span class="reserved">var</span> fragment = document.createDocumentFragment();
+<span class="reserved">var</span> ul = document.getElementById("ul");
+<span class="reserved">var</span> li = null;
+<span class="reserved">for</span> (<span class="reserved">var</span> i = 4; i >= 0; i--) {
+	li = document.createElement("li");
+	li.appendChild(document.createTextNode("item "+i));
+	fragment.appendChild(li);
+}
+ul.appendChild(fragment);</pre>
+<p><b>7) getElementsByTagName()</b> 方法可返回带有指定标签名的对象的集合。</p>
+<pre><span class="reserved">var</span> ul = document.getElementById("ul");
+<span class="reserved">var</span> lis = ul.getElementsByTagName("li");
+<span class="reserved">for</span> (<span class="reserved">var</span> i = 0; i < lis.length; i++) {
+	<span class="reserved">var</span> li=lis[i];
+	li.className="";
+}</pre>
+</body>
+</html>

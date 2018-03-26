@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义组件</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New,"微软雅黑"; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.string{ color:green; font-weight:bold;}
+		.comment{ color:gray; font-style:italic;}
+		.variable{ color:#607; font-weight:bold;}
+		.number{ color:red; font-weight:bold;}
+		.dom-object{ color:#909}
+		.member{ color:#a70;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<p>只要你制作的类具备编辑器的功能就行了</p>
+<p><a href="editor.html">参考这里 </a></p>
+<p>继承sky.Editor可以继承许多功能而不需要自己写了</p>
+<p>但是sky.Editor类比较杂乱，需要你先阅读源代码</p>
+<p>大部分一般情况继承PopupBox,PopupInput就可以了</p>
+<h3>继承PopupInput例子</h3>
+<pre>sky.editor.FontInput=<span class="reserved">function</span>(<span class="variable">element</span>,<span class="variable">options</span>){
+	<span class="reserved">var</span> $=<span class="reserved">this</span>;
+	<span class="reserved">var</span> <span class="variable">conf</span>={
+		<span class="member">'value'</span>:<span class="reserved">null</span>,
+		<span class="member">'required'</span>:<span class="reserved">false</span>,
+		<span class="member">'blankText'</span>:<span class="string">"未填写.."</span>,
+		<span class="member">'readOnly'</span>:<span class="reserved">false</span>
+	};
+	<span class="variable">conf</span>=<span class="variable">Sky</span>.<span class="member">extend</span>(<span class="variable">conf</span>,<span class="variable">options</span>);
+	sky.editor.PopupInput.<span class="member">call</span>(<span class="reserved">this</span>,<span class="variable">element</span>,<span class="variable">conf</span>);<span class="comment">//继承PopupInput</span>
+	Sky.addClass( <span class="reserved">this</span>.addon,<span class="string">"fa"</span>);
+	<span class="reserved">this</span>.addon.<span class="member">innerHTML</span>=<span class="string">'&#xf031;'</span>;
+	<span class="reserved">var</span> <span class="variable">picker</span>=<span class="reserved">new</span> sky.picker.FontPicker();
+	<span class="variable">$</span>.<span class="member">on</span>(<span class="string">'click'</span>,<span class="reserved">function</span>(){
+		<span class="variable">$</span>.<span class="member">isEditing</span>=<span class="reserved">true</span>;
+		<span class="reserved">var</span> <span class="variable">left</span>=<span class="variable">Sky</span>.<span class="member">getPageLeft</span>(<span class="variable">$</span>.dom);
+		<span class="reserved">var</span> <span class="variable">top</span>=<span class="variable">Sky</span>.<span class="member">getPageTop</span>(<span class="variable">$</span>.dom)+<span class="variable">$</span>.dom.<span class="member">offsetHeight</span>;
+		<span class="variable">picker</span>.<span class="member">show</span>(<span class="variable">left</span>,<span class="variable">top</span>);
+	});
+	<span class="variable">picker</span>.<span class="member">afterPick</span>=<span class="reserved">function</span>(<span class="variable">val</span>){
+		<span class="variable">$</span>.<span class="member">setValue</span>(<span class="variable">val</span>);
+	};
+	<span class="variable">picker</span>.<span class="member">onClose</span>=<span class="reserved">function</span>(){
+		<span class="variable">$</span>.<span class="member">isEditing</span>=<span class="reserved">false</span>;
+	};
+};</pre>
+<p><a href="../demo/editor/fontInput.html">演示</a></p>
+<h3>继承PopupBox例子</h3>
+<pre><span class="comment">//国家地区框</span>
+<span class="reserved">var</span> <span class="variable">GJDQBox</span>=<span class="reserved">function</span>(<span class="variable">element</span>,<span class="variable">options</span>){
+	<span class="reserved">var</span> <span class="variable">$</span>=<span class="reserved">this</span>;
+	<span class="reserved">var</span> <span class="variable">conf</span>={
+		<span class="member">'valueField'</span>:<span class="string">"id"</span>,
+		<span class="member">'displayField'</span>:<span class="string">"mc"</span>
+	};
+	<span class="variable">conf</span>=Sky.extend(<span class="variable">conf</span>,<span class="variable">options</span>);
+	sky.editor.PopupBox.<span class="member">call</span>(<span class="reserved">this</span>,<span class="variable">element</span>,<span class="variable">conf</span>);
+	<span class="variable">$</span>.<span class="member">on</span>(<span class="string">'click'</span>,<span class="reserved">function</span>(){
+		<span class="variable">$</span>.<span class="member">isEditing</span>=<span class="reserved">true</span>;
+		<span class="reserved">var</span> <span class="variable">dl</span>=sky.Dialog.<span class="member">iframe</span>(<span class="string">"/demo/grid/dataGrid.html"</span>,{<span class="string">'title'</span>:<span class="string">"国家地区"</span>});
+		<span class="variable">dl</span>.<span class="member">onConfirm</span>=<span class="reserved">function</span>(){
+			<span class="reserved">var</span> <span class="variable">selection</span>=<span class="variable">dl</span>.<span class="dom-object">window</span>.<span class="variable">grid</span>.<span class="member">getSelected</span>();
+			<span class="reserved">if</span>(<span class="variable">selection</span>){
+				<span class="variable">$</span>.<span class="member">setValue</span>(<span class="variable">selection</span>[<span class="variable">conf</span>.<span class="member">valueField</span>]);
+				<span class="variable">$</span>.<span class="member">setText</span>(<span class="variable">selection</span>[<span class="variable">conf</span>.<span class="member">displayField</span>]);
+			}<span class="reserved">else</span>{
+				<span class="dom-object">alert</span>(<span class="string">"请选择一行"</span>);
+				<span class="reserved">return</span> <span class="reserved">false</span>;
+			}
+			<span class="variable">$</span>.<span class="member">isEditing</span>=<span class="reserved">false</span>;
+		};
+	});
+};</pre>
+<p><a href="../demo/form/flowForm.html">演示</a></p>
+</body>
+</html>

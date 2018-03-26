@@ -1,0 +1,26 @@
+/* CSS Document */
+
+
+body{ font-size:12px; font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;}
+a{ color:#083772;}
+a:link{ color:#083772; text-decoration:none;}
+a:visited{ color:#1E4E8F; text-decoration:none;}
+a:hover{ color:#0000CC; text-decoration:underline;}
+a img{border:0 none;}
+h1{ font-size:18px;}
+h2{ font-size:15px;}
+h3{ font-size:12px; margin:0; font-weight:normal;}
+p{ color:#666; margin:0;}
+summary{outline:none}
+summary::-webkit-details-marker{ cursor:pointer;}
+.top-tools{ text-align:right;}
+.top-tools img{ vertical-align:middle;}
+.class-info{ font-size:14px; line-height:22px;}
+.class-info th{ text-align:left;}
+.member-table{ border-collapse:collapse; width:100%;}
+.member-table table{ border-collapse:collapse;}
+.member-table td,.member-table th{ border:1px solid #D0D0D0; padding:6px; line-height:18px;}
+.member-table th{ width:90%; text-align:left;}
+.member-table table th{ width:auto;}
+pre{ padding:3px; border:1px solid #CCC; background:#f8f8f8; overflow:auto; margin:2px;}
+.member-table tfoot{ background:#f0f0f0;}

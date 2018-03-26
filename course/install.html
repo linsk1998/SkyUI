@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>skyui的安装和集成</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.comment{ color:green;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<pre><span class="comment">&lt;!--引入css--&gt;</span>
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;SkyUI.css&quot;/&gt;
+<span class="comment">&lt;!--引入js--&gt;</span>
+&lt;script type=&quot;text/javascript&quot; src=&quot;SkyUI.all.js&quot;&gt;&lt;/script&gt;
+<span class="comment">&lt;!--和系统相关的设置--&gt;</span>
+&lt;script type=&quot;text/javascript&quot; src=&quot;integration.js&quot;&gt;&lt;/script&gt;</pre>
+<h3>和系统相关的js文件应该包含下面内容</h3>
+<p>我不生产图标，你要根据你的图标库改写这个函数 </p>
+<pre>Sky.createIcon=function(icon){
+	var image = document.createElement("img");
+	image.className='s-icon';
+	image.src =icon.indexOf("/")!=-1?icon:(Sky.base+"icons/"+icon.replace(/\-/g,"_")+".png");
+	return image;
+};</pre>
+<p>根据和后端商量的数据交换规则，修改buildQuery函数</p>
+<pre>Sky.buildQuery=function(obj){
+	var s='';
+	for(var key in obj){
+		var value=obj[key];
+		if(value instanceof Date){
+			value=obj[key].format("yyyy-MM-dd hh:mm:ss");
+		}else if(value===false){
+			value=0;
+		}else if(value===true){
+			value=1;
+		}else if(!value){
+			continue ;
+		}
+		s=s+key+'='+encodeURIComponent(value)+'&';
+	}
+	return s.substring(0,s.length-1);
+};</pre>
+<p>根据和后端商量的规则，修改表格的获取和提交数据规则</p>
+<pre>sky.Grid.prototype.loadList=<span class="reserved">function</span>(page,pagesize,sortname,sortorder){
+	<span class="reserved">var</span> grid=<span class="reserved">this</span>;
+	<span class="reserved">var</span> param={};
+	<span class="reserved">if</span>(page) param.page=page;
+	<span class="reserved">if</span>(pagesize) param.pagesize=pagesize;
+	<span class="reserved">if</span>(sortname) param.sortname=sortname;
+	<span class="reserved">if</span>(sortorder) param.sortorder=sortorder;
+	<span class="reserved">var</span> url=this.url+(this.url.indexOf('?')<0?'?'"&")+Sky.buildQuery(param);
+	<span class="reserved">this</span>.clear();
+	<span class="reserved">this</span>.setLoadingStyle(<span class="reserved">true</span>);
+	Sky.get(url,<span class="reserved">function</span>(data){
+		grid.setLoadingStyle(<span class="reserved">false</span>);
+		grid.showData(data.rows,page,data.total);
+	},'json',<span class="reserved">function</span>(data){
+		grid.setLoadingStyle(<span class="reserved">false</span>);
+		<span class="reserved">if</span>(<span class="reserved">this</span>.status==401){
+			alert('您的权限不足');
+			top.showReloginDialog();
+		}<span class="reserved">else</span> <span class="reserved">if</span>(<span class="reserved">this</span>.status==200){<span class="comment">//json解析有误</span>
+			alert('服务器处理请求错误');
+		}<span class="reserved">else</span> <span class="reserved">if</span>(<span class="reserved">this</span>.status==403){
+			<span class="reserved">alert</span>('禁止访问');
+		}<span class="reserved">else</span>{
+			<span class="reserved">if</span>(sky.Dialog){
+				sky.Dialog.error(data);
+			}<span class="reserved">else</span>{
+				alert('请求失败');
+			}
+		}
+	});
+};</pre>
+</body>
+</html>

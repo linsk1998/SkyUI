@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TreeItem</title>
+<link rel="stylesheet" type="text/css" href="../../common.css"/>
+</head>
+
+<body>
+	<div class="top-tools">
+		<a href="#method"><img src="../../../icons/famfamfam/bullet_green.png">方法</a>
+		<a href="#property"><img src="../../../icons/famfamfam/bullet_black.png">属性</a>
+	</div>
+	<h1>Class TreeItem</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky.tree</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../../../skyui/js/tree.js">tree.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>TreeItem</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td><a href="../events/EventDispatcher.html">EventDispatcher</a></td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：TreeItem</b>(Object attribute)</h3>
+					<details>
+						<summary>attribute详细属性</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>attribute.title</td>
+								<td>String</td>
+								<td>""</td>
+								<td>标题</td>
+							</tr>
+							<tr>
+								<td>attribute.icon</td>
+								<td>String</td>
+								<td>null</td>
+								<td>图标</td>
+							</tr>
+							<tr>
+								<td>attribute.link</td>
+								<td>String</td>
+								<td>"javascript:void 0;"</td>
+								<td>链接地址</td>
+							</tr>
+							<tr>
+								<td>attribute.isParent</td>
+								<td>Boolean</td>
+								<td>false</td>
+								<td>能不能展开</td>
+							</tr>
+							<tr>
+								<td>attribute.isExpand</td>
+								<td>Boolean</td>
+								<td>false</td>
+								<td>初始是否展开</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="addItem">
+				<td>
+					<h3><b>addItem</b>(<a href="#">TreeItem</a> treeItem)</h3>
+					<p>添加子节点</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="expand">
+				<td>
+					<h3><b>expand</b>()</h3>
+					<p>展开项</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="collapse">
+				<td>
+					<h3><b>collapse</b>()</h3>
+					<p>合并项</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr id="addListener">
+				<td>
+					<b>addListener</b>(String event, Function callback, Boolean before):void
+					<p>添加监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#addListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="on">
+				<td>
+					<b>on</b>(String event, Function callback):void
+					<p>添加事件发生前的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#on">EventDispatcher</a></td>
+			</tr>
+			<tr id="after">
+				<td>
+					<b>after</b>(String event, Function callback):void
+					<p>添加事件发生后的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#after">EventDispatcher</a></td>
+			</tr>
+			<tr id="removeListener">
+				<td>
+					<b>removeListener</b>(String event, Function callback):void
+					<p>移除监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#removeListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchEvent">
+				<td>
+					<b>dispatchEvent</b>(String event, Boolean before, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchOnEvent">
+				<td>
+					<b>dispatchOnEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchOnEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchAfterEvent">
+				<td>
+					<b>dispatchAfterEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchAfterEvent">EventDispatcher</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="property">属性</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>属性</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="attribute">
+				<td>
+					<h3><b>attribute</b>:Object</h3>
+					<p>创建时传的attribute</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="root">
+				<td>
+					<h3><b>root</b>:TreeItem</h3>
+					<p>树的根节点</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="parent">
+				<td>
+					<h3><b>parent</b>:TreeItem</h3>
+					<p>上一级节点</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="dom">
+				<td>
+					<h3><b>dom</b>:HTMLElement</h3>
+					<p>文档的html元素，是个li元素</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="firstChild">
+				<td>
+					<h3><b>firstChild</b>:TreeItem</h3>
+					<p>第一个子节点</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="children">
+				<td>
+					<h3><b>children</b>:Array&lt;TreeItem&gt;</h3>
+					<p>所有子节点的集合</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="lastChild">
+				<td>
+					<h3><b>lastChild</b>:TreeItem</h3>
+					<p>最后一个子节点</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="data">
+				<td>
+					<h3><b>data</b>:Object</h3>
+					<p>这个属性并没有定义，只是习惯上用xxxx.data来存放这个节点所含有的数据</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+			<tr id="isExpand">
+				<td>
+					<h3><b>isExpand</b>:Boolean</h3>
+					<p>判断当前是否展开</p>
+				</td>
+				<td>TreeItem</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../../common.js"></script>

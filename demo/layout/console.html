@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.all.js"></script>
+<style type="text/css">
+	.s-layout-south{ text-align:center; line-height:20px;}
+</style>
+</head>
+
+<body>
+</body>
+</html>
+<script>
+var layout=new sky.layout.BorderLayout({'west':{'title':"主要菜单",'width':250},'south':{'height':20},'north':{'height':30}});
+var body=new sky.Container(document.body);
+body.add(layout);
+layout.south.dom.appendChild(document.createTextNode("XXXXXX 版权所有"));
+</script>

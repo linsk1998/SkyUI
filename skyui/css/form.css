@@ -1,0 +1,15 @@
+
+td.s-tip{ color:#888;}
+.s-tip .fa{ color:#FF6600; margin-right:5px;}
+.s-anchorForm th{ font-weight:normal;}
+.s-anchorForm{ margin:5px auto; }
+
+.s-flowForm{ padding:10px;}
+.s-form-item{ margin:5px 0;}
+.s-form-item,.s-form-cell{ display:inline-block; vertical-align:middle;}
+.s-flowForm .s-tip{ background:#FFFFCC; border:1px solid #DDD; padding:3px 4px; margin-left:3px;
+	-moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; }
+	
+.s-searchForm{ display:inline-block; *display:inline; white-space:nowrap;}
+.s-searchForm .s-textBox{ display:inline-block;}
+.s-searchForm .s-button{ border-left:0 none;}

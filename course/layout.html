@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>布局</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.comment{ color:green;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<p><strong>Container</strong>容器类，</p>
+<p><strong>Component</strong>组件类，</p>
+<p>容器内可以放置组件，</p>
+<p>container.add(component);</p>
+<p>许多组件会自动监听容器的resize事件，从而适应容器的大小变化</p>
+<p>&nbsp;</p>
+<p>Viewport是一个特殊的Container，Viewport代表浏览器窗口的整个显示区域,将document.body作为渲染对象,它会根据浏览器窗口的大小自动调整自身的尺寸。</p>
+<p>Component是组件类，如按钮，表格等都是Component组件，</p>
+<p>&nbsp;</p>
+<p>也有一些布局相关的Component，例如BorderLayout、Accordion</p>
+<p>这些属性有一些属性是Container类型的</p>
+<p>可以继续添加别的组件</p>
+<p>例子</p>
+<pre><span class="reserved">var</span> viewport=<span class="reserved">new</span> sky.Viewport();<span class="comment">//容器</span>
+<span class="reserved">var</span> border=<span class="reserved">new</span> sky.layout.BorderLayout();<span class="comment">//组件</span>
+<span class="reserved">var</span> tabs=<span class="reserved">new</span> sky.layout.Tabs();<span class="comment">//组件</span>
+viewport.add(border);<span class="comment">//容器内放置组件</span>
+border.center.add(tabs);<span class="comment">//center是BorderLayout的一个属性，类型为Container</span></pre>
+<br>
+</body>
+</html>

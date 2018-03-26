@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TabItem</title>
+<link rel="stylesheet" type="text/css" href="../../common.css"/>
+</head>
+
+<body>
+	<div class="top-tools">
+		<a href="#method"><img src="../../../icons/famfamfam/bullet_green.png">方法</a>
+		<a href="#property"><img src="../../../icons/famfamfam/bullet_black.png">属性</a>
+		<a href="#event"><img src="../../../icons/famfamfam/bullet_feed.png">事件</a>
+	</div>
+	<h1>Class TabItem</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky.layout</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../../../skyui/js/layout.js">layout.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>TabItem</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td><a href="../events/EventDispatcher.html">EventDispatcher</a></td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：TabItem</b>(Object options)</h3>
+					<details>
+						<summary>options详细属性</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>options.id</td>
+								<td>String</td>
+								<td>null</td>
+								<td>如果遇到相同的id，会激活，而不是新打开</td>
+							</tr>
+							<tr>
+								<td>options.title</td>
+								<td>String</td>
+								<td>null</td>
+								<td>标题</td>
+							</tr>
+							<tr>
+								<td>options.closable</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>是否可以关闭</td>
+							</tr>
+							<tr>
+								<td>options.icon</td>
+								<td>String</td>
+								<td>null</td>
+								<td>图标</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>TabItem</td>
+			</tr>
+			<tr id="activate">
+				<td>
+					<h3><b>activate</b>()</h3>
+					<p>激活这个tab页</p>
+				</td>
+				<td>TabItem</td>
+			</tr>
+			<tr id="close">
+				<td>
+					<h3><b>close</b>()</h3>
+					<p>关闭这个tab页</p>
+				</td>
+				<td>TabItem</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr id="addListener">
+				<td>
+					<b>addListener</b>(String event, Function callback, Boolean before):void
+					<p>添加监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#addListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="on">
+				<td>
+					<b>on</b>(String event, Function callback):void
+					<p>添加事件发生前的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#on">EventDispatcher</a></td>
+			</tr>
+			<tr id="after">
+				<td>
+					<b>after</b>(String event, Function callback):void
+					<p>添加事件发生后的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#after">EventDispatcher</a></td>
+			</tr>
+			<tr id="removeListener">
+				<td>
+					<b>removeListener</b>(String event, Function callback):void
+					<p>移除监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#removeListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchEvent">
+				<td>
+					<b>dispatchEvent</b>(String event, Boolean before, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchOnEvent">
+				<td>
+					<b>dispatchOnEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchOnEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchAfterEvent">
+				<td>
+					<b>dispatchAfterEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchAfterEvent">EventDispatcher</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="property">属性</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>属性</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="id">
+				<td>
+					<h3><b>id</b>:String</h3>
+					<p>获取id</p>
+				</td>
+				<td>TabItem</td>
+			</tr>
+			<tr id="iframe">
+				<td>
+					<h3><b>iframe</b>:<a href="http://www.w3school.com.cn/jsref/dom_obj_iframe.asp">HTMLDOMIframe</a></h3>
+					<p>tab页的iframe对象</p>
+				</td>
+				<td>TabItem</td>
+			</tr>
+			<tr id="window">
+				<td>
+					<h3><b>window</b>:<a href="http://www.w3school.com.cn/jsref/dom_obj_window.asp">Window</a></h3>
+					<p>tab页的window对象</p>
+				</td>
+				<td>TabItem</td>
+			</tr>
+			<tr id="container">
+				<td>
+					<h3><b>container</b>:<a href="../Container.html">Container</a></h3>
+					<p>tab页的<a href="../Container.html">Container</a>对象</p>
+				</td>
+				<td>TabItem</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="event">事件</h2>
+	<table class="member-table">
+		<tr>
+			<th>事件</th>
+			<td>定义于</td>
+		</tr>
+		<tr id="event">
+			<td>
+				<h3><b>activate</b></h3>
+				<p>激活事件</p>
+			</td>
+			<td>TabItem</td>
+		</tr>
+		<tr id="event">
+			<td>
+				<h3><b>close</b></h3>
+				<p>关闭事件</p>
+			</td>
+			<td>TabItem</td>
+		</tr>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../../common.js"></script>

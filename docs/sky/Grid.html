@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Grid</title>
+<link rel="stylesheet" type="text/css" href="../common.css"/>
+</head>
+<body>
+	<div class="top-tools">
+		<a href="#method"><img src="../../icons/famfamfam/bullet_green.png">方法</a>
+		<a href="#property"><img src="../../icons/famfamfam/bullet_black.png">属性</a>
+	</div>
+	<h1>Class Grid</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../../skyui/js/grid.js">grid.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>Grid</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td><a href="Component.html">Component</a></td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：Grid</b>(Array columns,Object options)</h3>
+					<details>
+						<summary>column结构参考</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>column.header</td>
+								<td>String</td>
+								<td>""</td>
+								<td>表头文本</td>
+							</tr>
+							<tr>
+								<td>column.width</td>
+								<td>Integer/String</td>
+								<td>null</td>
+								<td>宽度，填数字或者百分比字符串</td>
+							</tr>
+							<tr>
+								<td>column.align</td>
+								<td>String</td>
+								<td>""</td>
+								<td>可选填 "left"、"center"、"right"，不填左对齐</td>
+							</tr>
+							<tr>
+								<td>column.sortable</td>
+								<td>Boolean</td>
+								<td>false</td>
+								<td>是否可以排序</td>
+							</tr>
+							<tr>
+								<td>column.render</td>
+								<td>Function</td>
+								<td>null</td>
+								<td>
+									<details>
+										<summary>渲染函数 例子</summary>
+<pre>function(value,data){
+	var input=document.createElement("INPUT");
+	input.type="checkbox";
+	input.name=conf.checkbox+"["+value+"]";
+	input.data=value;
+	return input;
+}</pre>
+<pre>function(value,data){
+	this.appendChild(document.createTextNode(value.format("yyyy-MM-dd")));
+}</pre>
+									</details>
+								</td>
+							</tr>
+						</table>
+					</details>
+					<details>
+						<summary>options结构参考</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>options.height</td>
+								<td>Integer</td>
+								<td>NaN</td>
+								<td>高度，正数表示固定高度，负数或零表示100%减像素</td>
+							</tr>
+							<tr>
+								<td>options.checkbox</td>
+								<td>Boolean/String</td>
+								<td>false</td>
+								<td>显示单选框，使用true获取到的数据为全部属性的集合，使用某个字段获取到的数据为某个字段的集合</td>
+							</tr>
+							<tr>
+								<td>options.error</td>
+								<td>Function</td>
+								<td>自行修改</td>
+								<td>请求失败回调函数</td>
+							</tr>
+							<tr>
+								<td>options.pageParmName</td>
+								<td>String</td>
+								<td>自行修改</td>
+								<td>页数参数名</td>
+							</tr>
+							<tr>
+								<td>options.pagesizeParmName</td>
+								<td>String</td>
+								<td>自行修改</td>
+								<td>页记录数参数名</td>
+							</tr>
+							<tr>
+								<td>options.sortnameParmName</td>
+								<td>String</td>
+								<td>自行修改</td>
+								<td>页排序列名</td>
+							</tr>
+							<tr>
+								<td>options.sortorderParmName</td>
+								<td>String</td>
+								<td>自行修改</td>
+								<td>页排序方向</td>
+							</tr>
+							<tr>
+								<td>options.dataTotalName</td>
+								<td>String</td>
+								<td>自行修改</td>
+								<td>获取数据的总数属性</td>
+							</tr>
+							<tr>
+								<td>options.dataRowsName</td>
+								<td>String</td>
+								<td>自行修改</td>
+								<td>获取数据的列表数组属性</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="getChecked">
+				<td>
+					<h3><b>getChecked</b>():Array</h3>
+					<p>获取用单选按钮选中的值</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="getSelected">
+				<td>
+					<h3><b>getSelected</b>():Object</h3>
+					<p>获取选中的行</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="clear">
+				<td>
+					<h3><b>clear</b>():void</h3>
+					<p>获取选中的行</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="loadUrl">
+				<td>
+					<h3><b>loadUrl</b>(url):void</h3>
+					<p>从一个地址加载数据</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr id="renderTo">
+				<td>
+					<h3><b>renderTo</b>(HTMLElement obj):void</h3>
+					<p>将一个组件添加到一个div中</p>
+				</td>
+				<td><a href="Component.html#renderTo">Component</a></td>
+			</tr>
+			<tr id="addListener">
+				<td>
+					<b>addListener</b>(String event, Function callback, Boolean before):void
+					<p>添加监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#addListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="on">
+				<td>
+					<b>on</b>(String event, Function callback):void
+					<p>添加事件发生前的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#on">EventDispatcher</a></td>
+			</tr>
+			<tr id="after">
+				<td>
+					<b>after</b>(String event, Function callback):void
+					<p>添加事件发生后的监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#after">EventDispatcher</a></td>
+			</tr>
+			<tr id="removeListener">
+				<td>
+					<b>removeListener</b>(String event, Function callback):void
+					<p>移除监听器</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#removeListener">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchEvent">
+				<td>
+					<b>dispatchEvent</b>(String event, Boolean before, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchOnEvent">
+				<td>
+					<b>dispatchOnEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchOnEvent">EventDispatcher</a></td>
+			</tr>
+			<tr id="dispatchAfterEvent">
+				<td>
+					<b>dispatchAfterEvent</b>(String event, Array args):void
+					<p>分发事件</p>
+				</td>
+				<td><a href="./events/EventDispatcher.html#dispatchAfterEvent">EventDispatcher</a></td>
+			</tr>
+		</tfoot>
+	</table>
+	<h2 id="property">属性</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>属性</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="page">
+				<td>
+					<h3><b>page</b>:Integer</h3>
+					<p>获取当前第几页</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="page">
+				<td>
+					<h3><b>page</b>:Integer</h3>
+					<p>获取当前第几页</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="pageSize">
+				<td>
+					<h3><b>pageSize</b>:Integer</h3>
+					<p>获取或设置每页多少条</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+			<tr id="loadList">
+				<td>
+					<h3><b>loadList</b>:Function</h3>
+					<p>自定义解析数据规则</p>
+				</td>
+				<td>Grid</td>
+			</tr>
+		</tbody>
+		<tfoot class="inherit">
+			<tr id="dom">
+				<td>
+					<h3><b>dom</b>:HTMLElement</h3>
+					<p>这个组件的节点元素</p>
+				</td>
+				<td><a href="Component.html#dom">Component</a></td>
+			</tr>
+			<tr id="container">
+				<td>
+					<h3><b>container</b>:<a href="Container.html">Container</a></h3>
+					<p>这个组件所在容器</p>
+				</td>
+				<td><a href="Component.html#container">Component</a></td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../common.js"></script>

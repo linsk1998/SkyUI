@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../../skyui/SkyUI.all.js"></script>
+</head>
+
+<body><div id="toolbar"></div>
+<form name="form1">
+	<input type="radio" name="radio" value="1" />1
+	<input type="radio" name="radio" value="2" />2
+	<input type="radio" name="radio" value="3" />3
+</form>
+</body>
+</html>
+<script>
+new sky.Toolbar([{'label':"编辑",'icon':'pencil','onclick':function(){
+	top.sky.Dialog.iframe("http://www.fjedu.gov.cn/jsp/panel.jsp?catalogPath=-15830-15835-15836-");
+}},{'label':"增加",'icon':'add'}]).renderTo("toolbar");
+function getSelection(){
+	var chkObjs = document.getElementsByName("radio");
+	for(var i=0;i<chkObjs.length;i++){
+		if(chkObjs[i].checked){
+			return chkObjs[i].value;
+			break;
+		}
+	}
+}
+</script>

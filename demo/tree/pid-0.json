@@ -1,0 +1,63 @@
+[
+	{'id':1,'parentId':0,'title':"新闻中心",'hasChild':1 },
+	{'id':2,'parentId':0,'title':"信息公开" ,'href':"http://www.linsk.us/",'target':"frameName",'hasChild':1},
+	{'id':3,'parentId':0,'title':"公众参与",'href':"http://dili.li/"},
+	{'id':4,'parentId':0,'title':"在线办事"},
+	{'id':5,'parentId':0,'title':"专题专栏"},
+	{'id':15,'parentId':0,'title':"测试",'hasChild':1}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

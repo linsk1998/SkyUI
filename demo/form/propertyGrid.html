@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+	<script src=" http://libs.baidu.com/json/json2/json2.js"></script>
+	<style>
+		#listView{ padding:5px;}
+		#listView img{ margin:3px; border:1px solid #FFF;}
+		#listView img.active{ border-color:red;}
+	</style>
+</head>
+
+<body>
+<div style="width:300px;" class="s-box" id="listView">
+</div>
+<br/>
+<div style="width:250px;" class="s-box" id="property1">
+</div>
+</body>
+</html>
+<script>
+
+	var groupData=[{"id":0,"name":"游客","level":0},
+		{"id":1,"name":"小黑屋","level":1},
+		{"id":2,"name":"未验证","level":2},
+		{"id":3,"name":"普通会员","level":5},
+		{"id":4,"name":"荣誉会员","level":50},
+		{"id":5,"name":"合作伙伴","level":100},
+		{"id":6,"name":"审核员","level":50},
+		{"id":7,"name":"管理员","level":1000},
+		{"id":8,"name":"站长","level":99999}];
+	var userColumns=[
+		{
+			'label':"用户ID",'name':"id"
+		},
+		{
+			'label':"用户名",'name':"name",'editor':"TextInput"
+		},
+		{
+			'label':"邮箱",'name':"email",'editor':"TextInput",'options':{'pattern':/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/,'title':"要求邮箱格式"}
+		},
+		{
+			'label':"出生日期",'name':"birthday",'editor':"DateInput"
+		},
+		{
+			'label':"用户组",'name':"group",'editor':"ComboBox",'options':{'source':groupData}
+		}
+	];
+	var houseColumns=[
+		{
+			'label':"房屋ID",'name':"id"
+		},
+		{
+			'label':"房屋名",'name':"name",'editor':"TextInput"
+		},
+		{
+			'label':"面积",'name':"square",'editor':"TextInput"
+		}
+	];
+	var users=[
+		{'id':1,'name':"admin",'email':"admin@admin.com",'birthday':new Date(),'group':6},
+		{'id':2,'name':"Tom",'email':"tom@admin.com",'birthday':new Date(),'group':6},
+		{'id':3,'name':"Jim",'email':"jim@admin.com",'birthday':new Date(),'group':6},
+		{'id':4,'name':"Lucy",'email':"lucy@admin.com",'birthday':new Date(),'group':6}
+	];
+	var houses=[
+		{'id':1,'name':"castle",'square':100},
+		{'id':2,'name':"tower",'square':101},
+		{'id':3,'name':"fortress",'square':111}
+	];
+
+	var property1=new sky.form.PropertyGrid();
+	property1.renderTo("property1");
+	property1.createForm(userColumns,"user");
+	property1.createForm(houseColumns,"house");
+	//property1.showForm("user");
+	property1.after("change",function(form,filed,data,editor){
+		if(filed=="name"){
+			if(form=="user"){
+				document.getElementById(form+data.id).title=data.name;
+			}else if(form=="user"){
+				document.getElementById(form+data.id).title=data.name;
+			}
+		}
+	});
+
+for(var i=0;i<users.length;i++){
+	createUserIcon(users[i]);
+}
+for(var i=0;i<houses.length;i++){
+	createHouseIcon(houses[i]);
+}
+	function createUserIcon(data){
+		var icon=Sky.createIcon("user");
+		icon.id="user"+data.id;
+		icon.title=data.name;
+		$("listView").appendChild(icon);
+		icon.onclick=function(){
+			clearIconSelection();
+			icon.className="active";
+			property1.loadData(data,"user");
+		}
+	}
+	function createHouseIcon(data){
+		var icon=Sky.createIcon("house");
+		icon.id="house"+data.id;
+		icon.title=data.name;
+		$("listView").appendChild(icon);
+		icon.onclick=function(){
+			clearIconSelection();
+			icon.className="active";
+			property1.loadData(data,"house");
+		}
+	}
+	function clearIconSelection(){
+		var icons=$("listView").getElementsByTagName("img");
+		for(var i=0;i<icons.length;i++){
+			icons[i].className="";
+		}
+	}
+</script>

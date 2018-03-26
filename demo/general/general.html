@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>常用功能</title>
+<style>
+html,body{border:0; height:100%;}
+h2{ margin-bottom:0;}
+p{ margin-top:0; font-size:14px;}
+pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px;}
+</style>
+<script type="text/javascript" src="../../skyui/SkyUI.all.js"></script>
+</head>
+
+<body>
+<h2>$=Sky</h2>
+<p>$如果被占用,,可以使用Sky.XXXX</p>
+<pre>$("id")//获取指定id的元素</pre>
+<h2>String.prototype.trim</h2>
+<p>删除左右两端的空格</p>
+<pre>var str="   asdasd   ";
+alert(str.trim());</pre>
+<h2>Array.prototype.indexOf</h2>
+<p>判断一个元素在数组中的位置</p>
+<pre>var arr=Array(1,2,3,4,5);
+alert(arr.indexOf(3));      //2
+alert(arr.indexOf("sss"));  //-1</pre>
+<h2>Date.prototype.format</h2>
+<p>时间对象的格式化</p>
+<pre>new Date().format("yyyy-MM-dd hh:mm:ss");</pre>
+<h2>Node.prototype.contains</h2>
+<p>判断一个节点后代是否包含另一个节点</p>
+<h2>$.getWordLength</h2>
+<p>获取字符串占位长度，按照一个中文为2,一个英文为1,请使用等宽字体</p>
+<h2>$.cutWord</h2>
+<p>截取字符串占位长度,用来补全省略号</p>
+<h2>$.escapeHtml</h2>
+<p>清除HTML代码</p>
+<h2>$.parseQuery</h2>
+<p>解析url参数</p>
+<pre>var param=$.parseQuery(location.search);
+var param2=$.parseQuery("a=1&b=2&c=3");   //{"a":"1","b":"2","c":"3"}</pre>
+<h2>$.buildQuery</h2>
+<p>转变为url数据(utf-8)</p>
+<pre>var param={"a":"1","b":"2","c":"3"};
+alert($.buildQuery(param));   //a=1&b=2&c=3</pre>
+<h2>浏览器判断(相当于jQuery.browser)</h2>
+<p>浏览器版本$.browser.version</p>
+<p>是否webkit:$.browser.safari</p>
+<p>是否opera:$.browser.opera</p>
+<p>UA是否msie:$.browser.msie</p>
+<p>是否mozilla:$.browser.mozilla</p>
+<p>是否ie:$.browser.ie</p>
+<p>是否ie6:$.browser.ie6</p>
+<p>是否ie11:$.browser.ie11</p>
+<h2>$.inArray(arr,value,column)</h2>
+<p>查找一个对象在数组的位置</p>
+<pre>var arr=[
+	{'id':0,'name':"小明",'age':18},
+	{'id':1,'name':"小红",'age':18},
+	{'id':2,'name':"小张",'age':18},
+	{'id':3,'name':"静静",'age':18}
+];
+alert($.inArray(arr,2,'id'));          //2
+alert($.inArray(arr,"小小",'name'));   //-1
+alert($.inArray(arr,18,'age'));        //0</pre>
+
+</body>
+</html>

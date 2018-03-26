@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+<script src=" http://libs.baidu.com/json/json2/json2.js"></script>
+<style>
+</style>
+</head>
+
+<body>
+	<div style="width:500px;" class="s-box">
+		<table class="s-form-table">
+			<thead>
+				<tr>
+					<th width="100">1</th>
+					<th width="100">2</th>
+					<th width="100">3</th>
+					<th width="100">4</th>
+					<th>5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr class="selected">
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="_width:500px; max-width:500px; margin:20px;" class="s-box" id="table1">
+	</div>
+	<input type="button" value="增加行" onclick="addRow()"/>
+	<input type="button" value="删除行" onclick="delRow()"/>
+	<input type="button" value="删除选中行" onclick="delSelectedRow()"/>
+	<input type="button" value="获取选中行" onclick="getSelectedData()"/>
+	<input type="button" value="获取全部数据" onclick="getData()"/>
+</body>
+</html>
+<script>
+	var groupData=[{"id":0,"name":"游客","level":0},
+		{"id":1,"name":"小黑屋","level":1},
+		{"id":2,"name":"未验证","level":2},
+		{"id":3,"name":"普通会员","level":5},
+		{"id":4,"name":"荣誉会员","level":50},
+		{"id":5,"name":"合作伙伴","level":100},
+		{"id":6,"name":"审核员","level":50},
+		{"id":7,"name":"管理员","level":1000},
+		{"id":8,"name":"站长","level":99999}];
+	var userData=[{"id":1,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":2,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":3,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":4,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":5,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":6,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":7,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":8,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":9,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"},
+{"id":10,"loginName":"admin","email":"admin@XXX.com","group":7,"group_display":"管理员","realName":"超级管理员"}];
+	
+	var table1=new sky.form.Table([//grid
+		{ header:'编号', name:'id', align:'center', width:100 },
+		{ header:'登录名', name:'loginName', minWidth:120,'editor':{'type':"TextBox"} },
+		{ header:'邮箱', name:'email', minWidth:120 ,'editor':"TextBox",'options':{'pattern':/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/,'title':"要求邮箱格式"}},
+		{ header:'真实姓名', name:'realName', minWidth:140,'editor':"TextBox" },
+		{ header:'用户组', name:'group',display:"group_display",'editor':"ComboBox",'options':{'source':groupData} }
+	]);
+	table1.renderTo("table1");
+	table1.showList(userData);
+
+	function addRow(){
+		table1.addRow({"id":333,"loginName":"test","email":"test@XXX.com","group":7,"realName":"测试"});
+	}
+	function delRow(){
+		table1.delRow(0);
+	}
+	function delSelectedRow(){
+		var index=table1.getSelectedRow()
+		if(index==-1){
+			alert("请选择一行");
+		}else{
+			table1.delRow(index);
+		}
+	}
+	function getSelectedData(){
+		var index=table1.getSelectedRow()
+		if(index==-1){
+			alert("请选择一行");
+		}else{
+			alert(JSON.stringify(table1.data[index]));
+		}
+	}
+	function getData(){
+		alert(JSON.stringify(table1.data));
+	}
+function show(){
+	var d=Sky.dialog.iframe("toolbar.html",{width:600,height:400});
+	d.onConfirm=function(){
+		var i=d.window.table1.getSelectedRow()
+		if(i!=-1)
+			alert(d.window.table1.data[i].id);
+	};
+}
+</script>

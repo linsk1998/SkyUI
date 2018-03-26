@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/tree.js"></script>
+<style>
+	#tree1,#tree2{width:200px; border:1px solid #333;}
+	#tree2{ height:200px; overflow:auto; *position:relative;}
+</style>
+</head>
+<body>
+	<div id="tree1">
+	</div>
+	<div id="tree2">
+	</div>
+</body>
+</html>
+<script>
+var treeData=[
+	{
+		'id':1,'parentId':0,
+		'title':"新闻中心" ,
+		'onclick':function(){alert(this.title);},
+		'children':[
+			{'id':6,'parentId':1,'title':"领导活动"},
+			{'id':7,'parentId':1,'title':"重要会议"},
+			{'id':8,'parentId':1,'title':"视频新闻"},
+			{'id':9,'parentId':1,'title':"各地要闻"},
+			{'id':10,'parentId':1,'title':"国际局势"}
+		]
+	},
+	{
+		'id':2,'parentId':0,
+		'title':"信息公开" ,
+		'href':"http://www.linsk.us/",
+		'target':"frameName",
+		'children':[
+			{'id':11,'parentId':2,'title':"政策解读"},
+			{'id':12,'parentId':2,'title':"公告公示"},
+			{'id':13,'parentId':2,'title':"人事信息"},
+			{'id':14,'parentId':2,'title':"财政资金"}
+		]
+	},
+	{'id':3,'parentId':0,'title':"公众参与",'href':"http://dili.li/"},
+	{'id':4,'parentId':0,'title':"在线办事"},
+	{'id':5,'parentId':0,'title':"专题专栏",'children':"treeData.json"}
+];
+
+var tree1=new sky.tree.MenuTree();
+var c=new sky.Container("tree1");
+c.add(tree1);
+
+
+var loadItem=function(node,data){
+	for(var i=0;i<data.length;i++){
+		var isParent=data[i].children?true:false;
+		var icon=isParent?"folder":"page-white";
+		var item=new sky.tree.TreeItem({'icon':icon,'title':data[i].title,'isParent':isParent,'link':data[i].href});
+		item.data=data[i];
+		node.addItem(item);
+	}
+};
+loadItem(tree1,treeData);
+
+
+var tree2=new sky.tree.MenuTree();
+var c=new sky.Container("tree2");
+c.add(tree2);
+var loadUrlItem=function(node,url){
+	var loading=Sky.createDiv("s-loading",node.dom);
+	node.status=1;
+	Sky.get(url,function(data){
+		loading.parentNode.removeChild(loading);
+		for(var i=0;i<data.length;i++){
+			var isParent=data[i].children?true:false;
+			var icon=isParent?"folder":"page-white";
+			var item=new sky.tree.TreeItem({'icon':icon,'title':data[i].title,'isParent':isParent,'link':data[i].href});
+			item.data=data[i];
+			node.addItem(item);
+		}
+		node.status=2;
+	},'json',function(){
+		node.status=0;
+		node.errorWrap=loading;
+		if(this.status==403){
+			loading.className="s-danger";
+			loading.appendChild(Sky.createIcon("exclamation"));
+			loading.appendChild(document.createTextNode("您没有权限"));
+		}else{
+			loading.className="s-warning";
+			loading.appendChild(Sky.createIcon("error"));
+			loading.appendChild(document.createTextNode("请求失败"));
+		}
+	});
+};
+loadUrlItem(tree2,"treeData.json");
+tree1.onExpand=tree2.afterExpand=function(item){
+	if(item.children.length==0){
+		if(Sky.isArray(item.data.children)){
+			loadItem(item,item.data.children);
+		}else{
+			if(!item.status){
+				loadUrlItem(item,item.data.children);
+			}
+		}
+	}
+};
+tree1.onCollapse=tree2.onCollapse=function(item){
+	if(item.errorWrap){
+		item.errorWrap.parentNode.removeChild(item.errorWrap);
+	}
+};
+</script>

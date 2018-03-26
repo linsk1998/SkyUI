@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SkyUI</title>
+<link rel="stylesheet" type="text/css" href="skyui/SkyUI.css"/>
+<script type="text/javascript" src="skyui/SkyUI.all.js"></script>
+<style type="text/css">
+	body{ overflow:hidden;}
+	#top{ height:31px; line-height:31px; background:#000066;  position:relative; border-top:1px solid #1D438B; padding:0 8px}
+	#top a,#top{ color:#E7E7E7;}
+	#top .welcome { float:right;}
+	.l-link{ display:block; line-height:22px; height:22px; padding-left:16px;border:1px solid white; margin:4px; color:#333; cursor:pointer;}
+	.l-link:hover{ background:#FFEEAC; border:1px solid #DB9F00;}
+	.listMenu li{ list-style-position:inside; line-height:22px; height:22px; padding-left:16px; margin:4px; border:1px solid white;}
+	.listMenu li:hover{ background:#FFEEAC; border:1px solid #DB9F00;}
+</style>
+</head>
+
+<body>
+<div id="top">
+	<div class="welcome">
+		您好，管理员		<span class="space">|</span>
+		<a href="javascript:leaveMessage();void 0">留言</a>
+		<span class="space">|</span>
+		<a href="javascript:void 0">退出</a>
+
+	</div>
+	<div class="logo">管理控制台</div>
+</div>
+<div id="main"></div>
+</body>
+</html>
+<script>
+var layout=new sky.layout.BorderLayout({'west':{'title':"主要菜单",'width':250},'south':{'height':0},'north':{'height':0},'height':-$("top").offsetHeight});
+var body=new sky.Container(document.body);
+body.add(layout);
+var tabs=new sky.layout.Tabs({'height':0});
+layout.center.add(tabs);
+$.attachEvent(window,'load',function(){
+	tabs.add({'title':"主页",'url':"main.html",'closable':false});
+});
+var accordion=new sky.layout.Accordion({'height':-layout.west.head.offsetHeight});
+layout.west.add(accordion);
+accordion.addPanel("功能演示");
+accordion.addPanel("教程");
+accordion.addPanel("API参考");
+accordion.addPanel("场景");
+accordion.expand(0);
+var tree1=new sky.tree.MenuTree();
+accordion.panels[0].body.add(tree1);
+
+var loadItem=function(node,data){
+	for(var i=0;i<data.length;i++){
+		var isParent=data[i].children?true:false;
+		var icon=isParent?"folder":"page-white";
+		var item=new sky.tree.TreeItem({'icon':icon,'title':data[i].title,'isParent':isParent,'link':data[i].url});
+		item.data=data[i];
+		node.addItem(item);
+	}
+};
+tree1.onExpand=function(item){
+	if(item.children.length==0){
+		loadItem(item,item.data.children);
+	}
+};
+tree1.onClick=function(item){
+	if(item.data.url){
+		tabs.add({'title':item.data.title,'url':item.data.url,'id':item.data.url});
+	}
+	return false;
+};
+$.get("demo/data.json",function(demoTreeData){
+	loadItem(tree1,demoTreeData);
+},'json');
+
+
+var tree2=new sky.tree.MenuTree();
+accordion.panels[1].body.add(tree2);
+var course=[
+	{
+		"title":"JavaScript基础" ,
+		"children":[
+			{'title':"Javascript基本语法",'url':"course/lang.html"},
+			{'title':"Javascript常用内置类",'url':"course/objectsinjs.html"},
+			{'title':"对象的属性方法事件",'url':"course/object.html"},
+			{'title':"DOM基础知识",'url':"course/dom.html"},
+			{'title':"JavaScript对象表示法",'url':"course/json.html"},
+			{'title':"自定义类",'url':"course/class.html"}
+		]
+	},
+	{
+		"title":"SkyUI入门" ,
+		"children":[
+			{'title':"SkyUI简介",'url':"main.html"},
+			{'title':"安装和集成",'url':"course/install.html"},
+			{'title':"常用功能",'url':"demo/general/general.html"},
+			{'title':"自定义事件",'url':"course/listener.html"},
+			{'title':"ajax",'url':"demo/general/ajax.html"},
+			{'title':"布局",'url':"course/layout.html"}
+		]
+	},
+	{
+		"title":"常用组件" ,
+		"children":[
+			{'title':"工具栏",'url':"demo/dialog/toolbar.html"},
+			{'title':"数据表格",'url':"demo/grid/toolbar.html"},
+			{'title':"后台布局",'url':"demo/layout/console.html"},
+			{'title':"树",'url':"demo/tree/MenuTree.html"}
+		]
+	},
+	{
+		"title":"对话框" ,
+		"children":[
+			{'title':"常用对话框",'url':"demo/dialog/alert.html"},
+			{'title':"遮罩",'url':"course/mask.html"},
+			{'title':"自定义对话框",'url':"demo/form/anchorForm.html"}
+		]
+	},
+	{
+		"title":"表单和编辑器" ,
+		"children":[
+			{'title':"编辑器基本特点",'url':"course/editor.html"},
+			{'title':"表单基本用法",'url':"demo/form/form.html"},
+			{'title':"动态生成表单",'url':"demo/form/flowForm.html"}
+		]
+	},
+	{
+		"title":"高级" ,
+		"children":[
+			{'title':"拖拽",'url':"demo/general/drag.html"},
+			//{'title':"拖放",'url':"notFinished.html?dd"},
+			{'title':"右键菜单",'url':"demo/menu/popup.html"},
+			{'title':"失去焦点",'url':"docs/sky/Blur.html"},
+			{'title':"选择器",'url':"demo/picker/datepicker.html"}
+		]
+	},
+	{
+		"title":"扩展" ,
+		"children":[
+			{'title':"自制组件",'url':"course/MyComponent.html"},
+			{'title':"自制布局组件",'url':"course/MyLayoutComponent.html"},
+			{'title':"自制选择器",'url':"course/MyPicker.html"},
+			{'title':"自制编辑器",'url':"course/MyEditor.html"}
+		]
+	}
+];
+tree2.onExpand=function(item){
+	if(item.children.length==0){
+		loadItem(item,item.data.children);
+	}
+};
+tree2.onClick=function(item){
+	if(item.data.url){
+		tabs.add({'title':item.data.title,'url':item.data.url,'id':item.data.url});
+	}
+	return false;
+};
+loadItem(tree2,course);
+
+var tree3=new sky.tree.MenuTree();
+accordion.panels[2].body.add(tree3);
+var loadApiItem=function(node,data){
+	for(var i=0;i<data.length;i++){
+		var param={};
+		param.isParent=data[i].children?true:false;
+		switch(data[i].type)
+		{
+			case "$":
+				param.icon="money-dollar";
+				break;
+			case "package":
+				param.icon="package";
+				break;
+			case "class":
+				//icon="page-white-c";
+				param.icon="class-obj";
+				break;
+			case "static":
+				param.icon="bullet-wrench";
+				break;
+			case "construct":
+				param.icon="bullet_add";
+				break;
+			case "method":
+				param.icon="bullet-green";
+				break;
+			case "event":
+				param.icon="bullet-feed";
+				break;
+			case "property":
+			default:
+				param.icon="bullet-black";
+		}
+		param.title=data[i].name;
+		var item=new sky.tree.TreeItem(param);
+		item.data=data[i];
+		node.addItem(item);
+	}
+};
+$.get("docs/data.json",function(apiTreeData){
+	loadApiItem(tree3,apiTreeData);
+},'json');
+
+tree3.onExpand=function(item){
+	if(item.children.length==0){
+		loadApiItem(item,item.data.children);
+	}
+};
+tree3.onClick=function(item){
+	var anchor;
+	switch(item.data.type)
+	{
+		case "$":
+			tabs.add({'title':item.data.name,'url':item.data.link,'id':item.data.link});
+			break;
+		case "class":
+			if(item.data.link){
+				tabs.add({'title':item.data.name,'url':item.data.link,'id':item.data.link});
+			}else{
+				var url="";
+				var curNode=item;
+				do{
+					url="/"+curNode.data.name+url;
+					curNode=curNode.parent;
+				}while(curNode!=this)
+				url="docs"+url+".html";
+				tabs.add({'title':item.data.name,'url':url,'id':url});
+			}
+			break;
+		case "construct":
+		case "event":
+			anchor=item.data.type;
+		case "static":
+		case "method":
+		case "property":
+			if(!anchor){
+				anchor=item.data.name;
+			}
+			if(item.data.link){
+				tabs.add({'title':item.data.name,'url':item.data.link,'id':item.data.link});
+				break;
+			}
+			var parentData=item.parent.data;
+			if(parentData.link){//如果有规定地址
+				tabs.add({'title':parentData.name,'url':parentData.link,'id':parentData.link});
+				if(item.data.anchor){
+					tabs.activeItem.iframe.src=parentData.link+item.data.anchor;
+				}else if(anchor){
+					tabs.activeItem.iframe.src=parentData.link+"#"+anchor;
+				}
+			}else{
+				var url="";
+				var curNode=item.parent;
+				do{
+					url="/"+curNode.data.name+url;
+					curNode=curNode.parent;
+				}while(curNode!=this)
+				url="docs"+url+".html";
+				tabs.add({'title':parentData.name,'url':url,'id':url});
+				if(item.data.anchor){
+					tabs.activeItem.iframe.src=url+item.data.anchor;
+				}else if(anchor){
+					tabs.activeItem.iframe.src=url+"#"+anchor;
+				}
+			}
+			break;
+		default:
+	}
+	return false;
+};
+
+var scenario=[
+	{'title':"增删改查",'url':"notFinished.html?db"},
+	{'title':"json视图",'url':"notFinished.html?json"},
+	{'title':"表单关联",'url':"notFinished.html?form"},
+	{'title':"数据建模",'url':"notFinished.html?m"},
+	{'title':"可视化表单设计",'url':"notFinished.html?vfd"}
+];
+var scenarioList=document.createElement("ul");
+scenarioList.className="listMenu";
+for(var i=0;i<scenario.length;i++){
+	var li=document.createElement("li");
+	var a=document.createElement("a");
+	a.appendChild(document.createTextNode(scenario[i].title));
+	li.appendChild(a);
+	a.href=scenario[i].url;
+	a.onclick=function(){
+		tabs.add({'title':this.innerHTML,'url':this.href,'id':this.href});
+		return false;
+	};
+	scenarioList.appendChild(li);
+}
+accordion.panels[3].body.dom.appendChild(scenarioList);
+
+
+var bb=new sky.ButtonBar({'btns':[{'label':'提交','onclick':function(){
+	if(msgForm.validate()){
+		sky.Dialog.showBusyIndicator(true);
+		$.post("/php/message.php",msgForm.getData(),function(data){
+			sky.Dialog.showBusyIndicator(false);
+			msgForm.reset();
+			msgDialog.close();
+			sky.Dialog.success(data);
+		},'text',function(data){
+			sky.Dialog.showBusyIndicator(false);
+			sky.Dialog.error(data);
+		});
+	}
+}}]});
+var msgDialog=new sky.Dialog({'title':"留言",'buttonBar':bb,'resizable':{'minWidth':250,'minHeight':120}});
+var msgForm=new sky.form.AnchorForm();
+msgForm.addItem("poster","用户名","TextInput",{'required':true},"必填");
+msgForm.addItem("title","标题","TextInput",{'required':true},"必填");
+msgForm.addItem("type","类型","SelectInput",{'value':"评价",'source':["评价","指正","建议","求助"],'readOnly':true,'required':true});
+msgForm.addItem("content","详情","TextArea",{'height':80});
+msgDialog.panel.body.add(msgForm);
+function leaveMessage(){
+	msgDialog.show();
+}
+</script>

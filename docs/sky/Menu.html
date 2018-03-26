@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Menu</title>
+<link rel="stylesheet" type="text/css" href="../common.css"/>
+</head>
+<body>
+	<div class="top-tools">
+		<a href="#method"><img src="../../icons/famfamfam/bullet_green.png"/>方法</a>
+	</div>
+	<h1>Class Menu</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../../skyui/js/menu.js">menu.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>Menu</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td>Object</td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：Menu</b>(Array items)</h3>
+					<p>传入一个对象数组，对象结构参考addItem</p>
+				</td>
+				<td>Menu</td>
+			</tr>
+			<tr id="addItem">
+				<td>
+					<h3><b>addItem</b>(String str):void</h3>
+					<p>如果为"-"表示分割线</p>
+					<h3><b>addItem</b>(Object options):void</h3>
+					<p>添加菜单项</p>
+					<details>
+						<summary>详细属性</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>options.icon</td>
+								<td>String</td>
+								<td>null</td>
+								<td>图标</td>
+							</tr>
+							<tr>
+								<td>options.label</td>
+								<td>String</td>
+								<td>""</td>
+								<td>菜单文本</td>
+							</tr>
+							<tr>
+								<td>options.onclick</td>
+								<td>Function</td>
+								<td>null</td>
+								<td>按下按钮动作</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>Menu</td>
+			</tr>
+			<tr id="enableItem">
+				<td>
+					<h3><b>enableItem</b>(Integer index,Boolean enable):void</h3>
+					<p>禁用或启用某个菜单项</p>
+				</td>
+				<td>Menu</td>
+			</tr>
+			<tr id="show">
+				<td>
+					<h3><b>show</b>(Integer x,Integer y):void</h3>
+					<p>让菜单出现在某个位置</p>
+				</td>
+				<td>Menu</td>
+			</tr>
+			<tr id="popup">
+				<td>
+					<h3><b>popup</b>(MouseEvent e):void</h3>
+					<p>让菜单出现在鼠标位置</p>
+				</td>
+				<td>Menu</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../common.js"></script>

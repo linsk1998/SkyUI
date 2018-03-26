@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>事件</title>
+<style>
+#outter{ width:50px; padding:50px; background:#0F0}
+#inner{ height:50px; background:#00F;}
+#inner2{ height:50px; background:#F00;}
+</style>
+<script type="text/javascript" src="../../skyui/SkyUI.all.js"></script>
+</head>
+
+<body>
+<div id="outter">
+	<div id="inner"></div>
+	<div id="inner2"></div>
+</div>
+<input type="button" value="触发事件" onclick="Sky.fireEvent($('inner'),'click');">
+</body>
+</html>
+<script>
+$=Sky;
+Sky.attachEvent($("inner"),'click',function(e){
+	alert("点击了里面");
+});
+Sky.attachEvent($("inner2"),'click',function(e){
+	alert("点击了里面2");
+});
+Sky.attachEvent($("outter"),'click',function(e){
+	alert("点击了外面");
+});
+//Sky.detachEvent();//移除事件
+</script>

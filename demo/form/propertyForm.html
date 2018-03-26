@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+	<script src=" http://libs.baidu.com/json/json2/json2.js"></script>
+	<style>
+	</style>
+</head>
+
+<body>
+<div style="width:200px;" class="s-box">
+	<table class="s-propertyGrid">
+		<thead>
+		<tr>
+			<th width="50%">属性</th>
+			<th>值</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		<tr class="selected">
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<div style="width:300px;" class="s-box">
+	<table id="table1" class="s-propertyGrid">
+		<thead>
+		<tr>
+			<th width="50%">属性</th>
+			<th>值</th>
+		</tr>
+		</thead>
+	</table>
+</div>
+<input type="button" value="设置值" onclick="setData()"/>
+<input type="button" value="获取值" onclick="alert(JSON.stringify(propertyForm.getData()));"/>
+</body>
+</html>
+<script>
+
+	var groupData=[{"id":0,"name":"游客","level":0},
+		{"id":1,"name":"小黑屋","level":1},
+		{"id":2,"name":"未验证","level":2},
+		{"id":3,"name":"普通会员","level":5},
+		{"id":4,"name":"荣誉会员","level":50},
+		{"id":5,"name":"合作伙伴","level":100},
+		{"id":6,"name":"审核员","level":50},
+		{"id":7,"name":"管理员","level":1000},
+		{"id":8,"name":"站长","level":99999}];
+	var propertyForm=new sky.form.PropertyForm([
+		{
+			'label':"用户ID",'name':"id",'editor':"TextInput"
+		},
+		{
+			'label':"用户名",'name':"name",'editor':"TextInput"
+		},
+		{
+			'label':"邮箱",'name':"email",'editor':"TextInput",'options':{'pattern':/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/,'title':"要求邮箱格式"}
+		},
+		{
+			'label':"出生日期",'name':"birthday",'editor':"DateInput"
+		},
+		{
+			'label':"用户组",'name':"group",'editor':"ComboBox",'options':{'source':groupData}
+		}
+	]);
+	$("table1").appendChild(propertyForm.dom);
+
+	function setData(){
+		propertyForm.setData({'id':123,'name':"admin",'email':"admin@admin.com",'birthday':new Date(),'group':6});
+	}
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+<script type="text/javascript" src="../../skyui/js/grid.js"></script>
+<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	
+<style>
+</style>
+</head>
+
+<body>
+
+</body>
+</html>
+<script>
+var view=sky.Viewport.getInstance();
+var grid=new sky.Grid([
+	{ header:'编号', name:'id', align:'center', width:60 , sortable:true},
+	{ header:'简称', name:'jc', align:'center', width:100 },
+	{ header:'名称', name:'mc', width:"30%" },
+	{ header:'英文名称', name:'ywmc' },
+	{ header:'英文字母代码', name:'ewzmdm',width:40 , sortable:true}
+],{'height':0});
+view.add(grid);
+grid.loadUrl("/php/queryGJDQ.php");
+</script>

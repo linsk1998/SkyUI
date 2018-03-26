@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自定义事件</title>
+<script type="text/javascript" src="../../skyui/SkyUI.all.js"></script>
+</head>
+
+<body>
+	<input value="响应事件" onclick="btn1ClickHandle()" type="button"/>
+	<input value="响应事件2" onclick="btn2ClickHandle()" type="button"/>
+</body>
+</html>
+<script>
+var obj=new sky.events.EventDispatcher();
+obj.addListener('event',function(){
+	alert("事件发生后");
+});
+obj.addListener('event',function(){
+	alert("事件发生前");
+	//return false; 如果返回false 就不会执行了
+},true);//第3个参数表示发生前还是后
+obj.on('event',function(){
+	alert("事件发生前简写");
+});
+obj.after('event',function(){
+	alert("事件发生后简写");
+});
+obj.onEvent=function(){//函数名根据事件名字来写,如果事件是click,函数名就叫onClick
+	alert("事件发生前的另一种写法");
+};
+obj.afterEvent=function(){//函数名根据事件名字来写,如果事件是click,函数名就叫afterClick
+	alert("事件发生后的另一种写法");
+};
+
+function btn1ClickHandle(){
+	if(obj.dispatchOnEvent('event')){//触发发生前的事件,根据返回值判断是否取消
+		alert("我的动作");
+		obj.dispatchAfterEvent('event');
+	}
+}
+
+//下面是自己声明类继承EventDispatcher的写法
+function Cat(){//构造函数
+	sky.events.EventDispatcher.call(this);//继承EventDispatcher
+	this.say=function(){
+		if(this.dispatchOnEvent('say')){//触发发生前的事件,根据返回值判断是否取消
+			alert("喵");
+			this.dispatchAfterEvent('say');
+		}
+	};
+}
+function btn2ClickHandle(){
+	var cat=new Cat();
+	cat.on('say',function(){
+		alert(1);
+	});
+	cat.after('say',function(){
+		alert(2);
+	});
+	cat.say();
+}
+</script>

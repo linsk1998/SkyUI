@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+<title>无标题文档</title>
+<style>
+#target{ position:absolute; width:100px; height:100px; background:#f5f5f5; border:1px solid #ccc;}
+#proxy{ height:30px; background:#CCC; cursor:move;}
+#test{ width:200px; height:30px; background:#6A9EE1;}
+</style>
+</head>
+
+<body>
+<div id="test">打开控制台看效果
+</div>
+<div id="target" ondragstart="return false">
+	<div id="proxy">啊啊啊啊啊啊</div>
+	啊啊啊啊啊啊
+</div>
+</body>
+</html>
+<script>
+
+	if(typeof(console)=="undefined"){
+		console={
+			'log':function(msg){
+				window.status=msg;
+			}
+		};
+	}
+
+var d=new sky.dd.Drag("test");
+d.onPress=function(){
+	console.log("Press");
+};
+d.onMove=function(){
+	console.log("move");
+};
+d.onRelease=function(){
+	console.log("release");
+};
+
+new sky.dd.Move("proxy","target");
+var resize=new sky.dd.Resize("target","target");
+	resize.minWidth=60;
+	resize.minHeight=60;
+</script>

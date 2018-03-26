@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/layout.js"></script>
+	<script type="text/javascript" src="../../skyui/js/menu.js"></script>
+</head>
+
+<body>
+	<div class="s-panel s-tabs" style="margin:20px; width:500px;">
+			<ul class="s-tabs-head"
+				><li class="cur">测试</li
+				><li>测试测试</li
+				><li>测试测试测试</li
+				><li>测试测试测试测试</li
+				><li>测试测试</li
+			></ul>
+			<div class="s-tabs-body">sss
+			</div>
+	</div>
+	<div class="s-panel" style="margin:20px; width:500px;" id="tab1">
+	</div>
+</body>
+</html>
+<script>
+var c=new sky.Container("tab1");
+var tab1=new sky.layout.Tabs({'height':200});
+c.add(tab1);
+tab1.add({'title':"无法关闭",'url':"http://www.fjedu.gov.cn/jsp/panel.jsp?catalogPath=-15830-15835-15836-",'closable':false});
+tab1.add({'icon':"help",'title':"阿萨德",'url':"../dialog/iframe/subPage.html"});
+tab1.add({'title':"qweqwe",'content':"asdasdasd"});
+</script>

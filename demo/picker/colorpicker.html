@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+</head>
+
+<body>
+	<input type="button" value="弹出" id="btn1"/><input type="text" value="" id="text1"/>
+<!--[if lte IE 7]><OBJECT ID="dlgHelper" CLASSID="clsid:3050f819-98b5-11cf-bb82-00aa00bdce0b" WIDTH="0" HEIGHT="0"></OBJECT><![endif]-->
+<script>
+var picker=new sky.picker.ColorPicker();
+picker.afterPick=function(val){
+	document.getElementById("text1").value=val;
+};
+document.getElementById("btn1").onclick=function(){
+	var x= $.getPageLeft(this);
+	var y= $.getPageTop(this);
+	picker.show(x,y+this.offsetHeight);
+};
+</script>
+</body>
+</html>

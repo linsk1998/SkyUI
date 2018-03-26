@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+</head>
+
+<body>
+	<div style="width:200px;">
+		<input type="hidden" name="ddd" id="popupBox1"/>
+		<input type="hidden" name="ddd" id="popupBox2"/>
+		<input type="hidden" name="ddd" id="popupBox3"/>
+	</div>
+</body>
+</html>
+<script>
+	var popupBox1=new sky.editor.PopupBox("popupBox1",{'height':20});
+	popupBox1.onclick=function(){
+		popupBox1.isEditing=true;
+		var dl=sky.Dialog.iframe("../dialog/iframe/subPage.html");
+		dl.onConfirm=function(){
+			var selection=dl.window.getSelection();
+			if(selection){
+				popupBox1.setValue(selection);
+				popupBox1.setText(selection);
+			}else{
+				popupBox1.setValue("");
+				popupBox1.setText("");
+			}
+			popupBox1.isEditing=false;
+		};
+	};
+	var popupBox2=new sky.editor.PagePopupBox("popupBox2",{
+		'height':20,
+		'url':"../grid/toolbar.html",
+		'run':"grid.getSelected()",
+		'valueField':"name",
+		'displayField':"name"
+	});
+</script>

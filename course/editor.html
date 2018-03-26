@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>编辑器基本特点</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.comment{ color:green;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<p>创建编辑器对象时，可以附加到一个input上，也可以添加到一个div里面</p>
+<p>有正常状态，验证失败状态，禁用状态</p>
+<p>可以清空内容，能够区分。""和null，在生成请求参数时如果为null,生成的参数就不包含改字段</p>
+<p>宽度可以适应上级div的宽度</p>
+<p>&nbsp;</p>
+<p>编辑器的基本用法</p>
+<p>new sky.editor.SelectInput(某个div,各种参数);</p>
+<p>new sky.editor.SelectInput(某个input,各种参数);</p>
+<p>两种创建方法</p>
+<p>各种参数有</p>
+<table cellpadding="6">
+	<tr>
+		<td>options.value</td>
+		<td>初始值，如果创建时附加到input元素上，初始值为input元素的value</td>
+	</tr>
+	<tr>
+		<td>options.required</td>
+		<td>是否必填</td>
+	</tr>
+	<tr>
+		<td>options.pattern</td>
+		<td>正则匹配</td>
+	</tr>
+	<tr>
+		<td>options.width</td>
+		<td>宽度，不指定可以适应上级div的宽度</td>
+	</tr>
+	<tr>
+		<td>options.height</td>
+		<td>高度</td>
+	</tr>
+	<tr>
+		<td>options.blankText</td>
+		<td>空白时显示的文字</td>
+	</tr>
+	<tr>
+		<td>options.title</td>
+		<td>填写错误时显示的文字</td>
+	</tr>
+	<tr>
+		<td>options.validator</td>
+		<td>自定义验证函数</td>
+	</tr>
+</table>
+<p>属性</p>
+<table cellpadding="6">
+	<tr>
+		<td>isEditing</td>
+		<td>是否正在编辑</td>
+	</tr>
+	<tr>
+		<td>input</td>
+		<td>编辑器绑定的input元素</td>
+	</tr>
+</table>
+<p>方法</p>
+<table cellpadding="6">
+	<tr>
+		<td>setWidth</td>
+		<td>设置宽度</td>
+	</tr>
+	<tr>
+		<td>setHeight</td>
+		<td>设置高度</td>
+	</tr>
+	<tr>
+		<td>remove</td>
+		<td>移除</td>
+	</tr>
+	<tr>
+		<td>setValue</td>
+		<td>设置值</td>
+	</tr>
+	<tr>
+		<td>getValue</td>
+		<td>获取值</td>
+	</tr>
+	<tr>
+		<td>setText</td>
+		<td>设置文本</td>
+	</tr>
+	<tr>
+		<td>getText</td>
+		<td>获取文本</td>
+	</tr>
+	<tr>
+		<td>enable</td>
+		<td>启用</td>
+	</tr>
+	<tr>
+		<td>disable</td>
+		<td>禁用</td>
+	</tr>
+	<tr>
+		<td>markInvalid</td>
+		<td>设为验证失败</td>
+	</tr>
+	<tr>
+		<td>clearInvalid</td>
+		<td>取消验证失败</td>
+	</tr>
+	<tr>
+		<td>isValid</td>
+		<td>是否通过验证</td>
+	</tr>
+	<tr>
+		<td>validate</td>
+		<td>验证</td>
+	</tr>
+	<tr>
+		<td>clear</td>
+		<td>清除值</td>
+	</tr>
+	<tr>
+		<td>reset</td>
+		<td>重置值</td>
+	</tr>
+</table>
+<p>事件</p>
+<table cellpadding="6">
+	<tr>
+		<td>change</td>
+		<td>改动</td>
+	</tr>
+</table>
+</body>
+</html>

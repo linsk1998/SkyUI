@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>基础知识</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.comment{ color:green;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+<body>
+<p>本文来源<a href="http://www.cnblogs.com/youring2/archive/2012/08/05/2621863.html" target="_blank">http://www.cnblogs.com/youring2/archive/2012/08/05/2621863.html</a></p>
+<h2>1.变量的定义和作用域</h2>
+<p>js中的所有变量都是使用var关键字来定义的，与变量的类型无关。例如：</p>
+<pre><span class="reserved">var</span> a = 1;
+<span class="reserved">var</span> a = "1";</pre>
+<p>第一个a的类型就是Number，第二个则是String。Number和String都是JS内置的类型。</p>
+<p>对于变量的作用域，如果我们是在函数外面定义的，那么它的作用域将是全局的，如果是在方法内定义的，则在方法体内有效。</p>
+<pre><span class="reserved">var</span> a = 1;
+document.write(a);<span class="comment">//输出1</span>
+<span class="reserved">function</span> demo() {
+	<span class="reserved">var</span> a = 2;
+	document.write(a);
+}
+demo();
+document.write(a);<span class="comment">//输出2</span></pre>
+<h2>Javascript 注释</h2>
+<p>注释分为单行注释和多行注释。单行注释以//开头，无需结尾；多行注释以 /* 开头，以 */ 结尾。例如：</p>
+<pre><span class="comment">//这是一个单行注释，下面的语句输出一个Helo单词</span>
+document.write("Hello ");
+<span class="comment">/*
+这是一个多行注释
+下面的代码将输出一个world单词
+*/</span>
+document.write("world! ");</pre>
+<h2>Javascript 运算符</h2>
+<p>运算符包括算术运算符、赋值运算符、比较运算符、逻辑运算符。 </p>
+<p>算术运算符用于执行变量与/或值之间的算术运算，JS中的算术运算符有：</p>
+<table border="1" cellpadding="6">
+	<tbody>
+		<tr>
+			<th>运算符</th>
+			<th>描述</th>
+			<th>例子</th>
+			<th>结果</th>
+		</tr>
+		<tr>
+			<td>+</td>
+			<td>加</td>
+			<td>x=y+2</td>
+			<td>x=7</td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>减</td>
+			<td>x=y-2</td>
+			<td>x=3</td>
+		</tr>
+		<tr>
+			<td>*</td>
+			<td>乘</td>
+			<td>x=y*2</td>
+			<td>x=10</td>
+		</tr>
+		<tr>
+			<td>/</td>
+			<td>除</td>
+			<td>x=y/2</td>
+			<td>x=2.5</td>
+		</tr>
+		<tr>
+			<td>%</td>
+			<td>求余数 (保留整数)</td>
+			<td>x=y%2</td>
+			<td>x=1</td>
+		</tr>
+		<tr>
+			<td>++</td>
+			<td>累加</td>
+			<td>x=++y</td>
+			<td>x=6</td>
+		</tr>
+		<tr>
+			<td>--</td>
+			<td>递减</td>
+			<td>x=--y</td>
+			<td>x=4</td>
+		</tr>
+	</tbody>
+</table>
+<p>赋值运算符用于给 JavaScript 变量赋值，JS中的赋值运算符有：</p>
+<table border="1" cellpadding="6">
+	<tbody>
+		<tr>
+			<th>运算符</th>
+			<th>例子</th>
+			<th>等价于</th>
+			<th>结果</th>
+		</tr>
+		<tr>
+			<td>=</td>
+			<td>x=y</td>
+			<td> </td>
+			<td>x=5</td>
+		</tr>
+		<tr>
+			<td>+=</td>
+			<td>x+=y</td>
+			<td>x=x+y</td>
+			<td>x=15</td>
+		</tr>
+		<tr>
+			<td>-=</td>
+			<td>x-=y</td>
+			<td>x=x-y</td>
+			<td>x=5</td>
+		</tr>
+		<tr>
+			<td>*=</td>
+			<td>x*=y</td>
+			<td>x=x*y</td>
+			<td>x=50</td>
+		</tr>
+		<tr>
+			<td>/=</td>
+			<td>x/=y</td>
+			<td>x=x/y</td>
+			<td>x=2</td>
+		</tr>
+		<tr>
+			<td>%=</td>
+			<td>x%=y</td>
+			<td>x=x%y</td>
+			<td>x=0</td>
+		</tr>
+	</tbody>
+</table>
+<p>比较运算符在逻辑语句中使用，以测定变量或值是否相等，JS中的比较运算符有：</p>
+<table border="1" cellpadding="6">
+	<tbody>
+		<tr>
+			<th>运算符</th>
+			<th>描述</th>
+			<th>例子</th>
+		</tr>
+		<tr>
+			<td>==</td>
+			<td>等于</td>
+			<td>x==8 为 false</td>
+		</tr>
+		<tr>
+			<td>===</td>
+			<td>全等（值和类型）</td>
+			<td>x===5 为 true；x==="5" 为 false</td>
+		</tr>
+		<tr>
+			<td>!=</td>
+			<td>不等于</td>
+			<td>x!=8 为 true</td>
+		</tr>
+		<tr>
+			<td>&gt;</td>
+			<td>大于</td>
+			<td>x&gt;8 为 false</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>小于</td>
+			<td>x&lt;8 为 true</td>
+		</tr>
+		<tr>
+			<td>&gt;=</td>
+			<td>大于或等于</td>
+			<td>x&gt;=8 为 false</td>
+		</tr>
+		<tr>
+			<td>&lt;=</td>
+			<td>小于或等于</td>
+			<td>x&lt;=8 为 true</td>
+		</tr>
+	</tbody>
+</table>
+<p>逻辑运算符用于测定变量或值之间的逻辑，JS中的逻辑运算符有：</p>
+<table border="1" cellpadding="6">
+	<tbody>
+		<tr>
+			<th>运算符</th>
+			<th>描述</th>
+			<th>例子</th>
+		</tr>
+		<tr>
+			<td>&amp;&amp;</td>
+			<td>and</td>
+			<td>(x &lt; 10 &amp;&amp; y &gt; 1) 为 true</td>
+		</tr>
+		<tr>
+			<td>||</td>
+			<td>or</td>
+			<td>(x==5 || y==5) 为 false</td>
+		</tr>
+		<tr>
+			<td>!</td>
+			<td>not</td>
+			<td>!(x==y) 为 true</td>
+		</tr>
+	</tbody>
+</table>
+<h2>Javascript 中的分支语句</h2>
+<p>Javascript的分支语句有两种，if...else...分支语句；switch...case...分支语句。</p>
+<p>if...else...分支：if后面的括号里面需要一个bool值或者一个逻辑表达式，如果后面只有一行要执行的语句，花括号可以省略不写。如果有多个条件判断，可以在else后面加上if判断即可。</p>
+<pre><span class="reserved">var</span> a = 1, b = 2;
+<span class="reserved">if</span> (a == b) {
+	alert("a和b不相等");
+} <span class="reserved">else</span> {
+	alert("a和b相等");
+}</pre>
+<p>switch...case...分支：switch 后面的 (n) 可以是表达式，也可以（并通常）是变量。然后表达式中的值会与 case 中的数字作比较，如果与某个 case 相匹配，那么其后的代码就会被执行。break 的作用是防止代码自动执行到下一行。</p>
+<pre><span class="reserved">var</span> a = "Hello";
+<span class="reserved">switch</span> (a) {
+	<span class="reserved">case</span> "Hello":
+		{
+			alert("Hello");
+		}
+		<span class="reserved">break</span>;
+	<span class="reserved">case</span> "World":
+		{
+			alert("World");
+		}
+		<span class="reserved">break</span>;
+	<span class="reserved">default</span>:
+		<span class="reserved">break</span>;
+}</pre>
+<h2>Javascript 中的循环语句</h2>
+<p>Javascript中的循环语句有：for循环，while循环。</p>
+<p>for循环示例：</p>
+<pre><span class="reserved">for</span>(<span class="reserved">var</span> a = 0; a<10; a++){
+    document.write("当前变量的值为：" + a);
+}</pre>
+<p>while循环示例：</p>
+<pre><span class="reserved">var</span> a = 0;
+<span class="reserved">while</span> (a < 10) {
+    document.write("当前变量的值为：" + a);
+    a++;
+}</pre>
+<p>在执行循环的过程中，我们可能要结束循环，或者结束本次循环，继续下次循环。如果要结束并跳出循环过程，需要使用break，结束本次循环，但仍进行下次循环，需要使用continue。</p>
+<pre><span class="reserved">for</span> (<span class="reserved">var</span> a = 0; a < 10; a++) {
+	<span class="reserved">if</span> (a > 5)
+		<span class="reserved">break</span>;
+	<span class="reserved">if</span> (a % 2 == 0)
+		<span class="reserved">continue</span>;
+	document.write("当前变量的值为：" + a);
+}</pre>
+<p>break和continue的区别是：break将结束并跳出循环，不再执行任何循环中的代码。continue将结束本次的循环，但扔进行下次判断，看是否需要继续执行。</p>
+<p>&nbsp;</p>
+</body>
+</html>

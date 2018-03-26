@@ -1,0 +1,9 @@
+checkbox{ display:inline-block; width:22px; height:22px; background-image:url(../skin/common/checkbox.png);}
+checkbox:hover{background-position:0 -22px;}
+checkbox[disabled]{ background-position:0 -44px;}
+checkbox[value="1"]{ background-position:-22px 0;}
+checkbox[value="2"]{ background-position:-44px 0;}
+checkbox[value="1"]:hover{ background-position:-22px -22px;}
+checkbox[value="2"]:hover{ background-position:-44px -22px;}
+checkbox[value="1"][disabled]{ background-position:-22px -44px;}
+checkbox[value="2"][disabled]{ background-position:-44px -44px;}

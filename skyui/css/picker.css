@@ -1,0 +1,41 @@
+
+.s-selectpicker{ border:1px solid #CCC; background:#FFF; width:200px; position:absolute; overflow:auto;}
+
+.s-datepicker{ padding:2px; width:200px;}
+.s-datepicker-head{ line-height:18px; padding:1px 0 3px;
+-moz-user-select:none; -webkit-user-select:none; -ms-user-select:none; user-select:none;}
+.s-datepicker-head .fa{ font-size:15px;}
+.s-datepicker-head table{ width:100%; border-collapse:collapse;}
+.s-datepicker-head td{ vertical-align:middle; text-align:center;}
+.s-datepicker-head span{ cursor:pointer; padding:2px;}
+.s-datepicker-head select{ margin:0; font-size:11px; }
+.s-datepicker-head input{ padding:0; height:12px;}
+.s-calendar{ width:100%; border:1px; border-collapse:collapse; border:1px solid #c5d9e8;}
+.s-calendar th{ background:#BDEBEE; font-weight:normal;}
+.s-calendar th,.s-calendar td{ text-align:center; line-height:1.8em;}
+.s-calendar-weekend{ color:#C00;}
+.s-calendar-today{ background:#ffd;
+box-shadow:0 0 1px #CC8833 inset;-moz-box-shadow:0 0 1px #CC8833 inset; -webkit-box-shadow:0 0 1px #CC8833 inset; }
+.s-calendar td{ cursor:pointer;}
+.s-calendar td:hover{ background:#BDEBEE;}
+.s-calendar td.active{ background:#A9E4E9;}
+.s-datepicker-ctrl input{ border:1px solid #CCCCCC; height:20px; margin-right:1px; margin-top:2px; width:45px;}
+.s-datepicker-ctrl{ text-align:right;}
+.s-datepicker-timeWrap{ float:left; margin-top:2px;}
+.s-datepicker-timeWrap .s-maskedBox{ *zoom:1; display:inline-block; *display:inline;}
+.s-datepicker-timeWrap .s-maskedBox input{ text-align:center;}
+.s-fontpicker li{ line-height:24px; font-size:14px; cursor:pointer;}
+.s-fontpicker li:hover{ background:#EAF2FF;}
+.s-fontpicker li:active{ background:#FFE48D;}
+
+.s-colorpicker{ width:auto; background:#F0F0F0;}
+.s-colorpicker table{ border-collapse:collapse; *width:253px;}
+.s-colorpicker table td{ width:11px; height:11px; border:1px solid #000; padding:0;/* cursor:url("../skin/common/eyedropper.cur"),auto;*/}
+.s-colorpicker table td:hover{ box-shadow:inset 1px 1px 2px #FFF; border-color:#FFF;}
+.s-colorpicker table thead th{ padding:2px; border:1px solid #000; vertical-align:middle; text-align:left;}
+.s-colorpicker-noneBtn,.s-colorpicker-sysBtn{ width:16px; height:16px; padding:0; border:0 none; background-image:url(../skin/common/colorpicker.png); background-color:transparent; vertical-align:middle;}
+.s-colorpicker input[type='color']::-webkit-color-swatch-wrapper{ border:0 none;}
+::-webkit-color-swatch { display:none;}::-moz-color-swatch { display:none;}
+.s-colorpicker-sysBtn{ background-position:-16px 0;}
+.s-colorpicker-dftBox{ display:inline-block; border:1px solid #000; width:40px; height:16px; vertical-align:middle;}
+.s-colorpicker-input{ width:50px; height:14px; padding:0; line-height:14px; margin:0 80px 0 2px; vertical-align:middle;}

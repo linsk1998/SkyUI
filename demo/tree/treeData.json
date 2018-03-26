@@ -1,0 +1,29 @@
+[
+	{
+		'id':1,'parentId':0,
+		'title':"新闻中心" ,
+		'onclick':function(){alert(this.title);},
+		'children':[
+			{'id':6,'parentId':1,'title':"领导活动"},
+			{'id':7,'parentId':1,'title':"重要会议"},
+			{'id':8,'parentId':1,'title':"视频新闻"},
+			{'id':9,'parentId':1,'title':"各地要闻"},
+			{'id':10,'parentId':1,'title':"国际局势"}
+		]
+	},
+	{
+		'id':2,'parentId':0,
+		'title':"信息公开" ,
+		'href':"http://www.linsk.us/",
+		'target':"frameName",
+		'children':[
+			{'id':11,'parentId':2,'title':"政策解读"},
+			{'id':12,'parentId':2,'title':"公告公示"},
+			{'id':13,'parentId':2,'title':"人事信息"},
+			{'id':14,'parentId':2,'title':"财政资金"}
+		]
+	},
+	{'id':3,'parentId':0,'title':"公众参与",'href':"http://dili.li/"},
+	{'id':4,'parentId':0,'title':"在线办事"},
+	{'id':5,'parentId':0,'title':"专题专栏",'children':"error url"}
+]

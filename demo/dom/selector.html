@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dom.js"></script>
+</head>
+
+<body>
+	<form name="form1">
+		<input name="input1" value=".s-panel&gt;.s-panel-head" size=60/>
+		<input type="button" name="btn" value="生成">
+	</form>
+	<div id="div1" style=" width:300px;"></div>
+</body>
+</html>
+<script>
+	document.form1.btn.onclick=function(){
+		var dom=sky.Dom.parseSelector(this.form.input1.value);
+		var div1=document.getElementById("div1");
+		div1.innerHTML='';
+		dom.appendChild(document.createTextNode("测试"));
+		div1.appendChild(dom);
+	};
+</script>

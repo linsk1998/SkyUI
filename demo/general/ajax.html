@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ajax</title>
+<script type="text/javascript" src="../../skyui/SkyUI.all.js"></script>
+</head>
+
+<body>
+<input value="get" type="button" onclick="getTest()">
+<input value="post" type="button" onclick="postTest()">
+<input value="ajax" type="button" onclick="ajaxTest()">
+<pre>
+Sky.ajax.get(地址,成功调回函数,数据类型,失败调回函数)；
+Sky.ajax.post(地址,post数据,成功调回函数,数据类型,失败调回函数);
+</pre>
+</body>
+</html>
+<script>
+function getTest(){
+	Sky.ajax.get("?",function(data){
+		alert(data);
+	});
+}
+function postTest(){
+	Sky.ajax.post("?","",function(data){
+		alert(data);
+	});
+}
+function ajaxTest(){
+	Sky.ajax({
+		'url' : "?",
+		'type' : "GET",
+		'dataType' : "text",
+		'success' : function(data){
+			alert(data);
+		},
+		'error' : function(txt){
+			//this表示当前的XMLHttpRequest对象
+			console.log(this);
+		}
+	});
+}
+</script>

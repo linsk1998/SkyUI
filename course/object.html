@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对象的属性方法事件</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.string{ color:green; font-weight:bold;}
+		.comment{ color:gray; font-style:italic;}
+		.variable{ color:#607; font-weight:bold;}
+		.dom-object{ color:#909}
+		.member{ color:#a70;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<p>可以把属性看作一个对象的性质，把方法看作对象的动作，把事件看作对象的响应。 </p>
+<p>举个例子</p>
+<p>比如有个视频播放器，它是一个对象，它会有那些属性呢方法事件呢？</p>
+<p><strong>属性:</strong></p>
+<p>它有属性width和height，使用这可以将它们当做一个变量来复制，从而调整它的尺寸。</p>
+<p>有些属性只允许读取，不允许修改，比如视频播放器就应该有个属性叫duration，用来获取视频的总时间，显然是无法修改的。</p>
+<p><strong>方法:</strong></p>
+<p>视频播放器有个方法是play()，有个方法是pause()，用来播放和暂停</p>
+<p><strong>事件:</strong></p>
+<p>事件是从对象内部产生，并向外传播到开发者，以便能够执行事件过程中的代码。</p>
+<p>例如视频播放器有个事件是ended，但视频播放完毕会触发这个事件。</p>
+<p>开发者可以监听这个事件，然后在播放完毕后执行动作。</p>
+<h2>例子</h2>
+<video id="myVideo" src="http://www.w3school.com.cn/i/movie.ogg" controls width="400" heigt="400">您的浏览器不支持，建议换一个浏览器</video>
+<p>获取属性</p>
+<pre><span class="reserved">var</span> <span class="variable">myVideo</span>=<span class="dom-object">document</span>.<span class="member">getElementById</span>(<span class="string">"myVideo"</span>);<span class="comment">//获取对象</span>
+<span class="reserved">var</span> <span class="variable">a</span>=<span class="variable">myVideo</span>.<span class="member">duration</span>;
+<span class="member">alert</span>(<span class="variable">a</span>);</pre>
+<button type="button" id="test1">试一试</button>
+<script>
+document.getElementById("test1").onclick=function(){
+	var myVideo=document.getElementById("myVideo");
+	var a=myVideo.duration;
+	alert(a);
+};
+</script>
+<p>设置属性</p>
+<pre><span class="reserved">var</span> <span class="variable">myVideo</span>=<span class="dom-object">document</span>.<span class="member">getElementById</span>(<span class="string">"myVideo"</span>);
+<span class="reserved">var</span> <span class="variable">a</span>=parseInt(<span class="dom-object">window</span>.<span class="member">prompt</span>(<span class="string">"请输入宽度"</span>,<span class="string">"600"</span>));
+<span class="variable">myVideo</span>.<span class="member">width</span>=<span class="variable">a</span>;</pre>
+<button type="button" id="test2">试一试</button>
+<script>
+document.getElementById("test2").onclick=function(){
+	var myVideo=document.getElementById("myVideo");
+	var a=parseInt(window.prompt("请输入宽度","600"));
+	myVideo.width=a;
+};
+</script>
+<p>方法调用</p>
+<pre><span class="reserved">var</span> <span class="variable">myVideo</span>=<span class="dom-object">document</span>.<span class="member">getElementById</span>(<span class="string">"myVideo"</span>);
+<span class="variable">myVideo</span>.<span class="member">play</span>();</pre>
+<pre><span class="reserved">var</span> <span class="variable">myVideo</span>=<span class="dom-object">document</span>.<span class="member">getElementById</span>(<span class="string">"myVideo"</span>);
+<span class="variable">myVideo</span>.<span class="member">pause</span>();</pre>
+<button type="button" id="test3">play()</button>
+<button type="button" id="test4">pause()</button>
+<script>
+document.getElementById("test3").onclick=function(){
+	var myVideo=document.getElementById("myVideo");
+	myVideo.play();
+};
+document.getElementById("test4").onclick=function(){
+	var myVideo=document.getElementById("myVideo");
+	myVideo.pause();
+};
+</script>
+<p>事件响应</p>
+<pre><span class="reserved">var</span> <span class="variable">myVideo</span>=<span class="dom-object">document</span>.<span class="member">getElementById</span>(<span class="string">"myVideo"</span>);
+<span class="variable">myVideo</span>.<span class="member">onended</span>=<span class="reserved">function</span>(){
+	<span class="member">alert</span>(<span class="string">"播放完了"</span>);
+};</pre>
+<script>
+var myVideo=document.getElementById("myVideo");
+myVideo.onended=function(){
+	alert("播放完了");
+};
+</script>
+<br/>
+<br/>
+<br/>
+</body>
+</html>

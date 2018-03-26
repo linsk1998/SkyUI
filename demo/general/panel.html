@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+	<div id="panel1" style="width:400px; margin:20px;" >
+	</div>
+</body>
+</html>
+<script>
+	var panel=new sky.Panel({'title':"主要菜单",'icon':'help','content':"asdad"});
+	var container=new sky.Container("panel1");
+    container.add(panel);
+	panel.addToolBtn('\uf013','fa',function(){
+		alert("自定义按钮");
+	});
+	panel.addToolBtnAt(0,'\u273f','red',function(){
+		alert("自定义按钮");
+	});
+</script>

@@ -1,0 +1,43 @@
+
+.s-menu-tree,.s-lines-tree{ overflow:auto; padding:3px; position:relative; min-height:22px;}
+.s-menu-tree li,.s-lines-tree li{ line-height:22px; min-height:22px; _height:22px; white-space:nowrap;}
+.s-menu-tree img,.s-lines-tree img{ vertical-align:middle; margin:-3px 5px 0 -1px; *margin:4px 4px 4px 0;}
+.s-menu-tree ul,.s-lines-tree ul{}
+.s-menu-tree .collapse ul,.s-lines-tree .collapse ul{ display:none;}
+
+.s-tree-hit{position:absolute; margin-left:-22px; width:22px; height:22px;cursor:pointer; display:block;}
+.s-menu-tree a,.s-lines-tree a{ display:block; cursor:default; outline:none; padding-left:5px;}
+.s-menu-tree a:hover,.s-lines-tree a:hover{ text-decoration:none; color:#111; border:0 none; background:#EAF2FF;}
+.s-menu-tree a:focus,.s-lines-tree a:focus{ -moz-outline-style:none;}
+.s-menu-tree .selected a,.s-lines-tree .selected a{background:#88F;}
+.s-menu-tree .s-loading,.s-lines-tree .s-loading{ font-size:18px; height:22px; _display:none; background:#EEF;}
+.s-menu-tree input,.s-lines-tree input{ vertical-align:middle; margin:-2px 5px 0 -1px; margin-right:5px;}
+/* 带网格的样式 */
+/* ie678 的网格是去掉的，如果需要就去掉注释
+.s-lines-tree li{background:url(../skin/common/tree-li-ie.png) left top no-repeat \9;}*/
+.s-lines-tree li{ padding-left:22px; background:url(../skin/common/tree-li.png) no-repeat 0 0,url(../skin/common/tree-ul.png) repeat-y 0 bottom;}
+.s-lines-tree>li:last-child,.s-lines-tree ul>li:last-child{ background:url(../skin/common/tree-li.png) no-repeat 0 0,url(../skin/common/tree-ul.png) no-repeat 0 -12px;}
+.s-lines-tree .s-tree-hit{background:url(../skin/common/tree-icons.png) -22px 22px; margin-left:-22px;}
+.s-lines-tree .collapse .s-tree-hit{ background-position:-22px 0;}
+.s-lines-tree .selected a,.s-lines-tree a.selected{ background:#CFDDEF;}
+
+/* 带三角形的样式*/
+.s-menu-tree ul{ padding-left:18px;}
+.s-menu-tree .s-tree-hit{background:url(../skin/common/tree-icons.png) 0 22px; margin-left:-18px;}
+.s-menu-tree .collapse .s-tree-hit{ background-position:0 0;}
+
+@media screen and (min-width:0) {
+	.s-menu-tree a:hover{ height:20px; line-height:20px; padding-left:4px; border:1px solid #f5f5f5;
+	-moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
+	background:#EEF; background:rgba(200,200,255,0.2); border-color:rgba(130,170,250,0.7);
+	background:-webkit-gradient(linear,left top,left bottom,from(rgba(255,255,255,0.2)),to(rgba(149,213,255,0.1)));
+	background:-moz-linear-gradient(top,rgba(255,255,255,0.2),rgba(149,213,255,0.1));
+	background:linear-gradient(to bottom,rgba(255,255,255,0.2),rgba(149,213,255,0.1));}
+
+	.s-menu-tree .selected a,.s-menu-tree a.selected{ height:20px; line-height:20px; padding-left:4px; border:1px solid #f5f5f5;
+	-moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
+	background:rgba(200,200,255,0.2); border-color:rgba(130,170,250,0.7);
+	background:-webkit-gradient(linear,left top,left bottom,from(rgba(200,235,255,0.2)),to(rgba(100,160,175,0.1)));
+	background:-moz-linear-gradient(top,rgba(220,235,255,0.2),rgba(100,160,175,0.1));
+	background:linear-gradient(to bottom,rgba(200,235,255,0.2),rgba(100,160,175,0.1));}
+}

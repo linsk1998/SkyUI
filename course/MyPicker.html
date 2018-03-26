@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>自定义组件</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New,"微软雅黑"; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.string{ color:green; font-weight:bold;}
+		.comment{ color:gray; font-style:italic;}
+		.variable{ color:#607; font-weight:bold;}
+		.number{ color:red; font-weight:bold;}
+		.dom-object{ color:#909}
+		.member{ color:#a70;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<pre>sky.picker.FacePicker=<span class="reserved">function</span>(){<span class="comment">//声明类</span>
+	sky.SelectPicker.<span class="member">call</span>(<span class="reserved">this</span>);<span class="comment">//继承SelectPicker</span>
+	<span class="reserved">var</span> <span class="variable">self</span>=<span class="reserved">this</span>;<span class="comment">//后面在点击事件里取的this就不一样了，所以要保存在一个变量里</span>
+	<span class="reserved">for</span>(<span class="reserved">var</span> <span class="variable">i</span>=<span class="number">100</span>;<span class="variable">i</span><=<span class="number">154</span>;<span class="variable">i</span>++){
+		<span class="comment">//创建图片</span>
+		<span class="reserved">var</span> <span class="variable">img</span>=<span class="dom-object">document</span>.<span class="member">createElement</span>(<span class="string">"img"</span>);
+		<span class="variable">img</span>.<span class="member">src</span>=<span class="string">"http://ctc.qzonestyle.gtimg.cn/qzone/em/e"</span>+<span class="variable">i</span>+<span class="string">".gif"</span>
+		<span class="reserved">this</span>.dom.<span class="member">appendChild</span>(<span class="variable">img</span>);<span class="comment">//添加图片</span>
+		<span class="variable">img</span>.<span class="member">onclick</span>=<span class="reserved">function</span>(){<span class="comment">//点击图片</span>
+			<span class="reserved">if</span>(<span class="variable">self</span>.<span class="member">dispatchOnEvent</span>(<span class="string">"pick"</span>,[<span class="reserved">this</span>.<span class="member">src</span>])){<span class="comment">//分发事件，把图片路径作为参数</span>
+				<span class="variable">self</span>.<span class="member">dispatchAfterEvent</span>(<span class="string">"pick"</span>,[<span class="reserved">this</span>.<span class="member">src</span>]);
+			}
+			<span class="variable">self</span>.<span class="member">close</span>();<span class="comment">//直接关掉了</span>
+		};
+	}
+};</pre>
+<p>调用</p>
+<pre><span class="reserved">var</span> <span class="variable">picker</span>=<span class="reserved">new</span> sky.picker.FacePicker();
+<span class="variable">picker</span>.<span class="member">afterPick</span>=<span class="reserved">function</span>(<span class="variable">src</span>){<span class="comment">//可以取到图片路径</span>
+	<span class="member">alert</span>(<span class="variable">src</span>);
+};
+<span class="variable">picker</span>.<span class="member">show</span>(<span class="number">0</span>,<span class="number">30</span>);</pre>
+<p><a href="../demo/picker/facepicker.html">演示</a></p>
+</body>
+</html>

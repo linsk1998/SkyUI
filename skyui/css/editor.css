@@ -1,0 +1,40 @@
+.s-textBox,.s-popupBox,.s-maskedBox{ border:1px solid #BED5F3; background:#fff; color:#999; padding-left:3px;}
+.s-textBox{ position:relative; min-height:14px;}
+.s-textBox input,.s-textBox textarea{ border:0 none; padding:0; width:100%; height:100%; outline:medium; resize:none;}
+.s-textBox input::-ms-clear{display:none;}
+.s-maskedBox input{ border:0 none; padding:0; margin:0; height:100%; outline:medium;}
+.s-autoBox{ padding-right:20px;}
+.s-editor-addon,.s-editor-trigger{ cursor:pointer; width:20px; text-align:center; color:#333; font-family:simhei;}
+.s-editor-addon{ position:absolute; right:0; top:0;}
+.s-autoBox .fa{ font-size:14px; color:#555;}
+.s-editor-trigger{ float:right; border-left:1px solid #BED5F3;
+	background:#C1DBFA;
+	background:-webkit-gradient(linear,left top,left bottom,from(#E0EDFF),to(#C1DBFA));
+	background:-moz-linear-gradient(top,#E0EDFF,#C1DBFA);
+	background:linear-gradient(to bottom,#E0EDFF 0,#D0E4FE 50%,#C1DBFA 51%,#DAEAFF);}
+.s-editor-trigger:hover{
+	background:#FFE48D;
+	background:-webkit-gradient(linear,left top,left bottom,from(#FFBE76),to(#FFE48D));
+	background:-moz-linear-gradient(top,#FFBE76,#FFE48D);
+	background:linear-gradient(to bottom,#FFBE76 0,#FFB86A 50%,#FFAB3F 51%,#FFE48D);}
+
+.s-invalid{ border-color:#f77; background:#fee;}
+.s-invalid input{ background:#fee;}
+.s-disabled{ border-color:#999; background:#EEE;}
+.s-disabled input{ background:#EEE; color:#AAA;}
+.s-disabled .s-editor-addon,.s-disabled .s-editor-clearBtn{pointer-events:none; color:#AAA;}
+.s-disabled .s-editor-trigger{pointer-events:none; color:#AAA; background:#EEE; border-color:#DDD;}
+.s-editor-caption{ color:#333;}
+
+.s-tooltip{ border:1px solid #C93; position:absolute; background:#FFC; padding:4px 10px; margin-top:-30px; *margin-top:-27px; line-height:14px;}
+.s-tooltip:before,.s-tooltip:after{ content:""; display:block; border-width:8px; position:absolute; bottom:-16px; left:10px; border-style:solid dashed dashed; border-color:#C93 transparent transparent; font-size:0; line-height:0;}
+.s-tooltip:after{ bottom:-15px; border-color:#FFC transparent transparent;}
+.s-editor-clearBtn{ float:right; cursor:pointer; margin-right:2px;}
+.s-textBox .s-editor-clearBtn{ position:absolute; right:0; top:0;}
+.s-autoBox .s-editor-clearBtn{right:20px;}
+
+
+
+.s-editor-dropDownList li{line-height:1.5; padding:3px 0 3px 3px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; cursor:pointer;}
+.s-editor-dropDownList li:hover{ background:#EAF2FF;}
+.s-editor-dropDownList li.selected{ background:#FFE48D;}

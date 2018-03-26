@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+</head>
+
+<body>
+<table width="200">
+	<tr>
+		<td></td>
+	</tr>
+</table>
+<div style="width:200px;">
+	<input type="hidden" id="comboBox1" value="asd"/>
+	<input type="button" onclick="alert(comboBox1.getValue())" value="获取值">
+	<input type="hidden" id="comboBox2" value="1"/>
+	<input type="button" onclick="alert(comboBox2.getValue())" value="获取值">
+	<input type="hidden" id="comboBox3" value="6"/>
+	<input type="button" onclick="alert(comboBox3.getValue())" value="获取值">
+</div>
+</body>
+</html>
+<script>
+var data=[
+	{'title':"阿萨德",'value':"asd"},
+	{'title':"请问",'value':"qwe"},
+	{'title':"自行车",'value':"zxc"},
+	{'title':"如啼眼",'value':"rty"},
+	{'title':"风格化",'value':"fgh"},
+	{'title':"vb你",'value':"vbn"},
+	{'title':"自行车",'value':"zxc"},
+	{'title':"如啼眼",'value':"rty"},
+	{'title':"风格化",'value':"fgh"},
+	{'title':"vb你",'value':"vbn"}
+];
+var comboBox1=new sky.editor.ComboBox("comboBox1",{valueField:'value',displayField:'title','source':data,'height':20});
+var comboBox2=new sky.editor.ComboBox("comboBox2",{valueField:'id',displayField:'title','source':"../tree/pid-0.json",'height':20});
+var comboBox3=new sky.editor.ComboBox("comboBox3",{valueField:'id',displayField:'title','source':"../tree/pid-1.json",'height':20});
+comboBox2.on('select',function(){
+	comboBox3.setValue(null);
+	comboBox3.clearItem();
+	comboBox3.loadItem("../tree/pid-"+this.getValue()+".json");
+})
+</script>

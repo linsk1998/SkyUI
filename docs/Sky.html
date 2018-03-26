@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>常用工具函数</title>
+<link rel="stylesheet" type="text/css" href="common.css"/>
+</head>
+
+<body>
+	<div class="top-tools">
+		<a href="#static"><img src="../icons/famfamfam/bullet_wrench.png">静态方法</a>
+		<!--<a href="#method"><img src="../icons/bullet_green.png">方法</a>-->
+		<a href="#property"><img src="../icons/famfamfam/bullet_black.png">静态属性</a>
+		<!--<a href="#event"><img src="../icons/bullet_feed.png">事件</a>-->
+	</div>
+	<h1>Class Sky</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../skyui/SkyUI.js">SkyUI.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>Sky</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td>Object</td>
+		</tr>
+	</table>
+	<h2 id="static">静态方法</h2>
+	<table class="member-table">
+		<tr>
+			<th>静态方法</th>
+			<td>定义于</td>
+		</tr>
+		<tr id="getWordLength">
+			<td>
+				<b>getWordLength</b>(String str):Number
+				<p>获取字符串长度，一个字母算1，一个中文算2</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="cutWord">
+			<td>
+				<b>cutWord</b>(String str,Number length,String replaceStr):Number
+				<p>获取字符串长度，一个字母算1，一个中文算2</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="escapeHtml">
+			<td>
+				<b>escapeHtml</b>(String str):String
+				<p>转义字符串的html标签</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="parseQuery">
+			<td>
+				<b>parseQuery</b>(String str):Object
+				<p>解析url参数</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="buildQuery">
+			<td>
+				<b>buildQuery</b>(Object obj):String
+				<p>转变为url数据(utf-8)</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="inArray">
+			<td>
+				<h3><b>inArray</b>(Array arr, * value):Number</h3>
+				<h3><b>inArray</b>(Object obj, * value, String name):Number</h3>
+				<p>获取一个元素在数组中的位置，-1表示不存在</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="extend">
+			<td>
+				<h3><b>extend</b>(Object obj1, Object obj2, ...):Object</h3>
+				<h3><b>extend</b>(Boolean deep, Object obj1, Object obj2, ...):Object</h3>
+				<p>扩展对象</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="attachEvent">
+			<td>
+				<h3><b>attachEvent</b>(HTMLElement obj, String evt, Function func):void</h3>
+				<p>绑定元素事件，为了浏览器兼容而封装的，<a href="../demo/general/event.html" target="_blank">例子</a></p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="detachEvent">
+			<td>
+				<h3><b>detachEvent</b>(HTMLElement obj, String evt, Function func):void</h3>
+				<p>解除元素事件绑定，为了浏览器兼容而封装的，<a href="../demo/general/event.html" target="_blank">例子</a></p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="fireEvent">
+			<td>
+				<h3><b>fireEvent</b>(HTMLElement obj, String evt):void</h3>
+				<p>触发元素事件，为了浏览器兼容而封装的，<a href="../demo/general/event.html" target="_blank">例子</a></p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="createIcon">
+			<td>
+				<h3><b>createIcon</b>(String icon):HTMLElement</h3>
+				<p>创建图表，根据项目需要自行改造这个函数</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="hasClass">
+			<td>
+				<h3><b>hasClass</b>(HTMLElement obj, String class):Boolean</h3>
+				<p>判断元素是否拥有一个CSS类</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="addClass">
+			<td>
+				<h3><b>addClass</b>(HTMLElement obj, String class):Boolean</h3>
+				<p>向元素添加CSS类</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="removeClass">
+			<td>
+				<h3><b>removeClass</b>(HTMLElement obj, String class):Boolean</h3>
+				<p>从元素去除CSS类</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="ajax">
+			<td>
+				<h3><b>ajax</b>(Object options):void</h3>
+				<p>http请求</p>
+				<details>
+					<summary>options详细属性</summary>
+					<table>
+						<tr>
+							<td>options.url</td>
+							<td>地址</td>
+						</tr>
+						<tr>
+							<td>options.success</td>
+							<td>成功调回函数</td>
+						</tr>
+						<tr>
+							<td>options.error</td>
+							<td>失败调回函数</td>
+						</tr>
+						<tr>
+							<td>options.complete</td>
+							<td>成功失败，后回调函数</td>
+						</tr>
+						<tr>
+							<td>options.dataType</td>
+							<td>xml,json,text</td>
+						</tr>
+						<tr>
+							<td>options.type</td>
+							<td>GET,POST</td>
+						</tr>
+						<tr>
+							<td>options.data</td>
+							<td>如果是String,Blob直接发送，对象转化为url字符串发送</td>
+						</tr>
+					</table>
+				</details>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="get">
+			<td>
+				<h3><b>get</b>(String url, Function success, String dataType, Function error):void</h3>
+				<p>ajax GET</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="post">
+			<td>
+				<h3><b>post</b>(String url, String data, Function success, String dataType, Function error):void</h3>
+				<p>ajax POST</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="getJSONP">
+			<td>
+				<h3><b>getJSONP</b>(String url, Function success):void</h3>
+				<p>getJSONP 例子：getJSONP("http://www.linsk.us/action/jsonpDemo.php?&_callback=?",function(data){});</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="getPageTop">
+			<td>
+				<h3><b>getPageTop</b>(HTMLElement obj):Number</h3>
+				<p>获取元素到文档顶部的距离</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="getPageLeft">
+			<td>
+				<h3><b>getPageLeft</b>(HTMLElement obj):Number</h3>
+				<p>获取元素到文档左部的距离</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="render">
+			<td>
+				<h3><b>render</b>(HTMLElement obj, Function jscallback,Array args):void</h3>
+				<p>渲染节点函数， 自行开发组件才会使用</p>
+				<details>
+					<summary>自行开发组件时这么用</summary>
+					<p>Sky.render(节点,从配置里获取的渲染函数,要传给这个函数的参数);</p>
+				</details>
+				<details>
+					<summary>使用自行开发组的件时这么用</summary>
+<pre>new XXXXXX({
+	'render':function(value){
+		if(value){
+			this.appendChild(document.createTextNode("男"));
+		}else{
+			this.appendChild(document.createTextNode("女"));
+		}
+	}
+});</pre>
+				</details>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="each">
+			<td>
+				<h3><b>each</b>(Object obj, Function fun):Number</h3>
+				<h3><b>each</b>(Array obj, Function fun):Number</h3>
+				<p>遍历元素</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+	</table>
+	<h2 id="property">静态属性</h2>
+	<table class="member-table">
+		<tr>
+			<th>静态属性</th>
+			<td>定义于</td>
+		</tr>
+		<tr id="browser">
+			<td>
+				<h3><b>browser</b>:Object</h3>
+				<details>
+					<summary>获取当前浏览器类型</summary>
+					<table>
+						<tr>
+							<td>browser.version</td>
+							<td>浏览器版本</td>
+						</tr>
+						<tr>
+							<td>browser.opera</td>
+							<td>是否opera</td>
+						</tr>
+						<tr>
+							<td>browser.webkit</td>
+							<td>是否webkit</td>
+						</tr>
+						<tr>
+							<td>browser.msie</td>
+							<td>是否msie（不包括ie11）</td>
+						</tr>
+						<tr>
+							<td>browser.ie</td>
+							<td>是否ie</td>
+						</tr>
+						<tr>
+							<td>browser.ie5</td>
+							<td>是否ie5及以下</td>
+						</tr>
+						<tr>
+							<td>browser.ie6</td>
+							<td>是否ie6</td>
+						</tr>
+						<tr>
+							<td>browser.ie7</td>
+							<td>是否ie7</td>
+						</tr>
+						<tr>
+							<td>browser.ie8</td>
+							<td>是否ie8</td>
+						</tr>
+						<tr>
+							<td>browser.ie9</td>
+							<td>是否ie9</td>
+						</tr>
+						<tr>
+							<td>browser.ie10</td>
+							<td>是否ie10</td>
+						</tr>
+						<tr>
+							<td>browser.ie11</td>
+							<td>是否ie11</td>
+						</tr>
+					</table>
+				</details>
+			</td>
+			<td>Sky</td>
+		</tr>
+		<tr id="base">
+			<td>
+				<h3><b>base</b>:Object</h3>
+				<p>获取当前js文件夹路径</p>
+			</td>
+			<td>Sky</td>
+		</tr>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="common.js"></script>

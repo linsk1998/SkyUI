@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dialog</title>
+<link rel="stylesheet" type="text/css" href="../common.css"/>
+</head>
+<body>
+	<div class="top-tools">
+		<a href="#static"><img src="../../icons/famfamfam/bullet_wrench.png">静态方法</a>
+		<a href="#method"><img src="../../icons/famfamfam/bullet_green.png">方法</a>
+		<a href="#property"><img src="../../icons/famfamfam/bullet_black.png">属性</a>
+		<a href="#event"><img src="../../icons/famfamfam/bullet_feed.png">事件</a>
+	</div>
+	<h1>Class Dialog</h1>
+	<table class="class-info">
+		<tr>
+			<th>所在包:</th>
+			<td><a href="./">sky</a></td>
+		</tr>
+		<tr>
+			<th>所在文件:</th>
+			<td><a href="../js/dialog.js">dialog.js</a></td>
+		</tr>
+		<tr>
+			<th>类:</th>
+			<td>Dialog</td>
+		</tr>
+		<tr>
+			<th>继承:</th>
+			<td>Object</td>
+		</tr>
+	</table>
+	<h2 id="static">静态方法</h2>
+	<table class="member-table">
+		<tr>
+			<th>静态方法</th>
+			<td>定义于</td>
+		</tr>
+		<tr id="mask">
+			<td>
+				<h3><b>mask</b>():Object</h3>
+				<p>弹出一个黑色半透明的遮罩</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="mask">
+			<td>
+				<h3><b>showBusyIndicator</b>(Boolean visibility):void</h3>
+				<p>弹出一个黑色半透明的遮罩,上面显示正在加载中。。</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="print">
+			<td>
+				<h3><b>print</b>(String html):HTMLElement</h3>
+				<h3><b>print</b>(HTMLElement element):HTMLElement</h3>
+				<p>在屏幕的正中间创建HTML元素，返回所在的元素</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="waiting">
+			<td>
+				<h3><b>waiting</b>(String message,Object options):Object</h3>
+				<p>创建一个等待对话框，返回对话框的操作对象，调用close()关闭</p>
+				<details>
+					<summary>options详细属性</summary>
+					<table>
+						<tr>
+							<th>属性</th>
+							<th>类型</th>
+							<th>默认</th>
+							<th>说明</th>
+						</tr>
+						<tr>
+							<td>options.width</td>
+							<td>Integer</td>
+							<td>400</td>
+							<td>宽度</td>
+						</tr>
+						<tr>
+							<td>options.title</td>
+							<td>String</td>
+							<td>"提示"</td>
+							<td>标题</td>
+						</tr>
+					</table>
+				</details>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="alert">
+			<td>
+				<h3><b>alert</b>(String message,String title,Boolean mask):Object</h3>
+				<p>创建一个对话框，返回对话框的操作对象，调用close()关闭</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="success">
+			<td>
+				<h3><b>success</b>(String message):Object</h3>
+				<p>创建一个成功对话框，返回对话框的操作对象，调用close()关闭</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="warn">
+			<td>
+				<h3><b>warn</b>(String message):Object</h3>
+				<p>创建一个警告对话框，返回对话框的操作对象，调用close()关闭</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="error">
+			<td>
+				<h3><b>error</b>(String message):Object</h3>
+				<p>创建一个错误对话框，返回对话框的操作对象，调用close()关闭</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="iframe">
+			<td>
+				<h3><b>iframe</b>(String url,Object options):<a href="Dialog.html">Dialog</a></h3>
+				<p>创建一个iframe对话框，返回对话框的操作对象，调用close()关闭</p>
+				<details>
+					<summary>options详细属性</summary>
+					<table>
+						<tr>
+							<th>属性</th>
+							<th>类型</th>
+							<th>默认</th>
+							<th>说明</th>
+						</tr>
+						<tr>
+							<td>options.width</td>
+							<td>Integer</td>
+							<td>400</td>
+							<td>宽度</td>
+						</tr>
+						<tr>
+							<td>options.height</td>
+							<td>Integer</td>
+							<td>300</td>
+							<td>高度</td>
+						</tr>
+						<tr>
+							<td>options.closable</td>
+							<td>Boolean</td>
+							<td>true</td>
+							<td>显示关闭按钮</td>
+						</tr>
+						<tr>
+							<td>options.title</td>
+							<td>String</td>
+							<td>""</td>
+							<td>标题</td>
+						</tr>
+						<tr>
+							<td>options.resizable</td>
+							<td>Boolean</td>
+							<td>true</td>
+							<td>能否调整大小</td>
+						</tr>
+						<tr>
+							<td>options.movable</td>
+							<td>Boolean</td>
+							<td>true</td>
+							<td>能否移动</td>
+						</tr>
+						<tr>
+							<td>options.mask</td>
+							<td>Boolean</td>
+							<td>true</td>
+							<td>是否显示遮罩</td>
+						</tr>
+					</table>
+				</details>
+			</td>
+			<td>Dialog</td>
+		</tr>
+		<tr id="showToast">
+			<td>
+				<h3><b>showToast</b>(String msg,Integer timeout):void</h3>
+				<p>显示一行消息，随后自动消失</p>
+			</td>
+			<td>Dialog</td>
+		</tr>
+	</table>
+	<h2 id="method">方法</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="construct">
+				<td>
+					<h3><b>构造函数：Dialog</b>(Object options)</h3>
+					<details>
+						<summary>options详细属性</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>options.width</td>
+								<td>Integer</td>
+								<td>400</td>
+								<td>宽度</td>
+							</tr>
+							<tr>
+								<td>options.height</td>
+								<td>Integer</td>
+								<td>null</td>
+								<td>高度</td>
+							</tr>
+							<tr>
+								<td>options.closable</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>显示关闭按钮</td>
+							</tr>
+							<tr>
+								<td>options.title</td>
+								<td>String</td>
+								<td>""</td>
+								<td>标题</td>
+							</tr>
+							<tr>
+								<td>options.resizable</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>能否调整大小</td>
+							</tr>
+							<tr>
+								<td>options.movable</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>能否移动</td>
+							</tr>
+							<tr>
+								<td>options.mask</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>是否显示遮罩</td>
+							</tr>
+							<tr>
+								<td>options.buttons</td>
+								<td>Array</td>
+								<td>[]</td>
+								<td>按钮配置
+									<details>
+										<summary>例子</summary>
+<pre>[{'label':'取消','onclick':function(){
+	this.close();
+}}]</pre>
+									</details>
+								</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>Dialog</td>
+			</tr>
+			<tr id="show">
+				<td>
+					<h3><b>show</b>(options):void</h3>
+					<details>
+						<summary>options详细属性</summary>
+						<table>
+							<tr>
+								<th>属性</th>
+								<th>类型</th>
+								<th>默认</th>
+								<th>说明</th>
+							</tr>
+							<tr>
+								<td>options.movable</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>能否移动</td>
+							</tr>
+							<tr>
+								<td>options.mask</td>
+								<td>Boolean</td>
+								<td>true</td>
+								<td>是否显示遮罩</td>
+							</tr>
+						</table>
+					</details>
+				</td>
+				<td>Dialog</td>
+			</tr>
+			<tr id="close">
+				<td>
+					<h3><b>close</b>():void</h3>
+					<p>关闭对话框</p>
+				</td>
+				<td>Dialog</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="property">属性</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>方法</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr id="panel">
+				<td>
+					<h3><b>panel</b>():<a href="Panel.html">Panel</a></h3>
+					<p>关闭对话框</p>
+				</td>
+				<td>Dialog</td>
+			</tr>
+			<tr id="dom">
+				<td>
+					<h3><b>dom</b>():HTMLElement</h3>
+					<p>对话框所在的HTML元素</p>
+				</td>
+				<td>Dialog</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 id="event">事件</h2>
+	<table class="member-table">
+		<thead>
+			<tr>
+				<th>事件</th>
+				<td>定义于</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<h3><b>close</b></h3>
+					<p>关闭对话框事件</p>
+				</td>
+				<td>Dialog</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
+<script type="text/javascript" src="../common.js"></script>

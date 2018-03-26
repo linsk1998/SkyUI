@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/menu.js"></script>
+<title>无标题文档</title>
+</head>
+
+<body>
+<ul class="s-menu" style="margin:20px;">
+	<li>测试测试</li>
+	<li class="disable">测试测试</li>
+	<li><img src="../../icons/famfamfam/add.png" class="icon"/>测试测试</li>
+	<li class="s-menu-separator"></li>
+	<li>测试测试</li>
+</ul>
+<div id="div1" style="width:400px; height:400px; margin:4px; background:#f1f1f1; float:left;">
+</div> 
+<div id="div2" style="width:400px; height:400px; margin:4px; background:#fa93f3; float:left;">
+</div> 
+
+</body>
+</html>
+<script>
+var menu2=new sky.Menu([{'label':"添加",'icon':"add"},{'label':"删除",'icon':"delete"}]);
+menu2.addItem("-");
+menu2.addItem({'label':"取消",'onclick':function(){
+	alert("取消");
+}});
+document.getElementById("div2").oncontextmenu=function(ev){
+	ev=ev || window.event;
+	//menu2.show(ev.pageX,ev.pageY);
+	menu2.popup(ev);
+	return false;
+};
+</script>

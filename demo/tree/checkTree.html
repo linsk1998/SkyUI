@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>勾选树</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/tree.js"></script>
+	<script src=" http://libs.baidu.com/json/json2/json2.js"></script>
+	<style>
+		#tree1,#tree2,#tree3,#tree4,#tree5,#treeOnlyLeafCheck{width:200px; border:1px solid #333; margin-bottom:20px;}
+		#tree2{ height:200px; overflow:auto; *position:relative;}
+	</style>
+</head>
+
+<body>
+父节点与子节点互不影响
+<button type="button" onclick="alert(tree1.getCheckedIds().join(','))">获取选中</button>
+<button type="button" onclick="alert(JSON.stringify(tree1.getCheckedIdsWithException()))">获取选中,及排除</button>
+<button type="button" onclick="tree1.checkAll()">全选</button>
+<button type="button" onclick="tree1.unCheckAll()">全不选</button>
+<button type="button" onclick="tree1.unCheckAll();tree1.setCheckedByIds([1,5,6,7,8])">设置勾选</button>
+<div id="tree1">
+</div>
+父节点会根据与子节点的勾选变成，选中、半选中、未选中状态，数据只取子节点时用的
+<button type="button" onclick="alert(tree2.getCheckedIds().join(','))">获取选中</button>
+<button type="button" onclick="alert(tree2.getCheckedLeafIds().join(','))">获取选中的末端节点</button>
+<button type="button" onclick="tree2.unCheckAll();tree2.setLeafCheckedByIds([1,5,6,7,8])">设置勾选</button>
+<div id="tree2">
+</div>
+这种可以区分，【勾选父节点】和【勾选应该节点的所有子节点】这两种情况
+<button type="button" onclick="alert(tree3.getCheckedIds().join(','))">获取选中</button>
+<div id="tree3">
+</div>
+这种可以区分，【勾选父节点】和【勾选应该节点的所有子节点】这两种情况
+<button type="button" onclick="alert(tree4.getCheckedIds().join(','))">获取选中</button>
+<div id="tree4">
+</div>
+父节点与子节点互不影响，但是勾选了父节点会自动勾选子节点，可以用于排除模式
+<button type="button" onclick="alert(tree5.getCheckedIds().join(','))">获取选中</button>
+<button type="button" onclick="alert(JSON.stringify(tree5.getCheckedIdsWithException()))">获取选中,及排除</button>
+<button type="button" onclick="tree5.setCheckedByIdsWithException([24,30],[26,28])">按照排除勾选</button>
+<div id="tree5">
+</div>
+只有终极节点能勾选
+<button type="button" onclick="alert(treeOnlyLeafCheck.getCheckedIds().join(','))">获取选中</button>
+<button type="button" onclick="alert(treeOnlyLeafCheck.getCheckedLeafIds().join(','))">获取选中的末端节点</button>
+<div id="treeOnlyLeafCheck">
+</div>
+</body>
+</html>
+<script>
+	var listData=[
+		{'id':1,'parentId':0,'title':"新闻中心" },
+		{'id':2,'parentId':0,'title':"信息公开" },
+		{'id':3,'parentId':0,'title':"公众参与"},
+		{'id':4,'parentId':0,'title':"在线办事"},
+		{'id':5,'parentId':0,'title':"专题专栏"},
+		{'id':6,'parentId':1,'title':"领导活动"},
+		{'id':7,'parentId':1,'title':"重要会议"},
+		{'id':8,'parentId':1,'title':"视频新闻"},
+		{'id':9,'parentId':1,'title':"各地要闻"},
+		{'id':10,'parentId':1,'title':"国际局势"},
+		{'id':11,'parentId':2,'title':"政策解读"},
+		{'id':12,'parentId':2,'title':"公告公示"},
+		{'id':13,'parentId':2,'title':"人事信息"},
+		{'id':14,'parentId':2,'title':"财政资金"},
+		{'id':15,'parentId':3,'title':"在线访谈"},
+		{'id':16,'parentId':3,'title':"在线咨询"},
+		{'id':17,'parentId':3,'title':"网上调查"},
+		{'id':18,'parentId':4,'title':"介绍信申请"},
+		{'id':19,'parentId':4,'title':"准考证补办"},
+		{'id':20,'parentId':4,'title':"西部支教申请"},
+		{'id':21,'parentId':5,'title':"预防电信诈骗"},
+		{'id':22,'parentId':5,'title':"两学一做"},
+		{'id':23,'parentId':5,'title':"大学生创业大赛"},
+		{'id':24,'parentId':0,'title':"测试"},
+		{'id':25,'parentId':24,'title':"测试"},
+		{'id':26,'parentId':24,'title':"测试"},
+		{'id':27,'parentId':25,'title':"测试"},
+		{'id':28,'parentId':25,'title':"测试"},
+		{'id':29,'parentId':28,'title':"测试"},
+		{'id':30,'parentId':28,'title':"测试"}
+	];
+
+	var loadItem=function(node,id){
+		for(var i=0;i<listData.length;i++){
+			if(listData[i].parentId==id){
+				var isParent=Sky.inArray(listData,listData[i].id,"parentId")==-1?false:true;
+				var icon=isParent?"folder":"page-white";
+				var item=new sky.tree.TreeItem({'icon':icon,'title':listData[i].title+"("+listData[i].id+")",'isParent':isParent,'id':listData[i].id});
+				item.data=listData[i];
+				node.addItem(item);
+				loadItem(item,listData[i].id);
+			}
+		}
+	};
+	var tree1=new sky.tree.CheckTree();
+	var c1=new sky.Container("tree1");
+	c1.add(tree1);
+	loadItem(tree1,0);
+	var tree2=new sky.tree.CheckTree({'mode':1});
+	var c2=new sky.Container("tree2");
+	c2.add(tree2);
+	loadItem(tree2,0);
+	var tree3=new sky.tree.CheckTree({'mode':2});
+	var c3=new sky.Container("tree3");
+	c3.add(tree3);
+	loadItem(tree3,0);
+	var tree4=new sky.tree.CheckTree({'mode':3});
+	var c4=new sky.Container("tree4");
+	c4.add(tree4);
+	loadItem(tree4,0);
+	var tree5=new sky.tree.CheckTree({'mode':4});
+	var c5=new sky.Container("tree5");
+	c5.add(tree5);
+	loadItem(tree5,0);
+
+	var treeOnlyLeafCheck=new sky.tree.CheckTree({onlyLeafCheck:true});
+	var ctnOnlyLeafCheck=new sky.Container("treeOnlyLeafCheck");
+	ctnOnlyLeafCheck.add(treeOnlyLeafCheck);
+	loadItem(treeOnlyLeafCheck,0);
+
+</script>

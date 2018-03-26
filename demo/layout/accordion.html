@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/layout.js"></script>
+<script type="text/javascript" src="../../skyui/js/accordion.js"></script>
+<style>
+html,body{ height:100%;}
+</style>
+</head>
+
+<body>
+<input type="text" size="10">
+<div id="accordion" style="width:400px; margin:20px;" class="s-box">
+</div>
+<div id="accordion2" style="width:400px; margin:20px; height:300px;" class="s-box">
+</div>
+</body>
+</html>
+<script>
+	var c1=new sky.Container("accordion");
+	var accordion1=new sky.layout.Accordion({'panels':[{'title':"sss"},{'title':"111"}]});
+	c1.add(accordion1);
+
+	for(var i=0;i<accordion1.panels.length;i++){
+		var html='';
+		for(var j=1;j<10;j++){
+			html+=j+'<br/>';
+		}
+		accordion1.panels[i].body.dom.innerHTML=html;
+	}
+	var c2=new sky.Container("accordion2");
+	var accordion2=new sky.layout.Accordion({'panels':[{'title':"sss"},{'title':"111"}],'height':0});
+	c2.add(accordion2);
+</script>

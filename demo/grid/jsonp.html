@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+<script type="text/javascript" src="../../skyui/js/grid.js"></script>
+<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	
+<style>
+</style>
+</head>
+
+<body>
+<div class="s-box" style="max-width:600px; height:200px; margin:30px;" id="grid3">
+</div>
+</body>
+</html>
+<script>
+	
+var grid3=new sky.Grid([
+	{ header:'玩家', name:'name', align:'center'},
+	{ header:'最高分', name:'maxpoint', align:'center' , render:function(data){ return parseFloat(data)/25;} , sortable:true },
+	{ header:'提交日期', name:'posttime', align:'center', render:function(data){ return (new Date(parseInt(data)*1000)).format("yyyy-MM-dd");}, sortable:true},
+	{ header:'尝试次数', name:'try', align:'center', sortable:true}
+],{'height':0});
+grid3.loadList=function(page,pagesize,sortname,sortorder){
+	var grid=this;
+	var param={};
+	if(page) param.page=page;
+	if(pagesize) param.pagesize=pagesize;
+	if(sortname) param.sortname=sortname;
+	if(sortorder) param.sortorder=sortorder;
+	grid.clear();//清空已有的列表
+	grid.setLoadingStyle(true);//出现加载的圈圈
+	Sky.getJSONP("http://www.linsk.us/action/jsonpDemo.php?"+ $.buildQuery(param)+"&_callback=",function(data){
+		grid.setLoadingStyle(false);//关闭加载的圈圈
+		grid.showData(data.rows,page,data.total);
+	},'json');
+};
+grid3.renderTo("grid3");
+grid3.refresh();
+	
+</script>

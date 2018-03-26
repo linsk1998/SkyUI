@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+<style>
+</style>
+</head>
+
+<body>
+	<input type="button" value="弹出" id="btn1"/><input type="text" value="" id="text1"/>
+	<script>
+
+sky.picker.FacePicker=function(){//声明类
+	sky.SelectPicker.call(this);//继承SelectPicker
+	var self=this;//后面在点击事件里取的this就不一样了，所以要保存在一个变量里
+	for(var i=100;i<=154;i++){
+		//创建图片
+		var img=document.createElement("img");
+		img.src="http://ctc.qzonestyle.gtimg.cn/qzone/em/e"+i+".gif"
+		this.dom.appendChild(img);//添加图片
+		img.onclick=function(){//点击图片
+			if(self.dispatchOnEvent("pick",[this.src])){//分发事件，把图片路径作为参数
+				self.dispatchAfterEvent("pick",[this.src]);
+			}
+			self.close();//直接关掉了
+		};
+	}
+};
+		var picker=new sky.picker.FacePicker();
+		picker.afterPick=function(src){//可以取到图片路径
+			document.getElementById("text1").value=src;
+		};
+		document.getElementById("btn1").onclick=function(){
+			var x= $.getPageLeft(this);
+			var y= $.getPageTop(this);
+			picker.show(x,y+this.offsetHeight);
+		};
+
+	</script>
+</body>
+</html>

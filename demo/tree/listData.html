@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/tree.js"></script>
+<style>
+	#tree1,#tree2{width:200px; border:1px solid #333;}
+	#tree2{ height:200px; overflow:auto; *position:relative;}
+</style>
+</head>
+
+<body>
+	<div id="tree1">
+	</div>
+	<div id="tree2">
+	</div>
+</body>
+</html>
+<script>
+var listData=[
+	{'id':1,'parentId':0,'title':"新闻中心" ,'onclick':function(){alert(this.title);}},
+	{'id':2,'parentId':0,'title':"信息公开" ,'href':"http://www.linsk.us/",'target':"frameName"},
+	{'id':3,'parentId':0,'title':"公众参与",'href':"http://dili.li/"},
+	{'id':4,'parentId':0,'title':"在线办事"},
+	{'id':5,'parentId':0,'title':"专题专栏"},
+	{'id':6,'parentId':1,'title':"领导活动"},
+	{'id':7,'parentId':1,'title':"重要会议"},
+	{'id':8,'parentId':1,'title':"视频新闻"},
+	{'id':9,'parentId':1,'title':"各地要闻"},
+	{'id':10,'parentId':1,'title':"国际局势"},
+	{'id':11,'parentId':2,'title':"政策解读"},
+	{'id':12,'parentId':2,'title':"公告公示"},
+	{'id':13,'parentId':2,'title':"人事信息"},
+	{'id':14,'parentId':2,'title':"财政资金"},
+	{'id':15,'parentId':0,'title':"测试"},
+	{'id':16,'parentId':15,'title':"测试"},
+	{'id':17,'parentId':15,'title':"测试"},
+	{'id':18,'parentId':15,'title':"测试"},
+	{'id':19,'parentId':18,'title':"测试"},
+	{'id':20,'parentId':18,'title':"测试"},
+	{'id':21,'parentId':18,'title':"测试"},
+	{'id':22,'parentId':18,'title':"测试"},
+	{'id':23,'parentId':22,'title':"测试"},
+	{'id':24,'parentId':23,'title':"测试"}
+];
+
+var tree1=new sky.tree.MenuTree();
+var c=new sky.Container("tree1");
+c.add(tree1);
+var loadItem=function(node,id){
+	for(var i=0;i<listData.length;i++){
+		if(listData[i].parentId==id){
+			var isParent=Sky.inArray(listData,listData[i].id,"parentId")==-1?false:true;
+			var icon=isParent?"folder":"page-white";
+			var item=new sky.tree.TreeItem({'icon':icon,'title':listData[i].title,'isParent':isParent,'link':listData[i].href});
+			item.data=listData[i];
+			node.addItem(item);
+		}
+	}
+};
+loadItem(tree1,0);
+tree1.onExpand=function(item){
+	if(item.children.length==0){
+		loadItem(item,item.data.id);
+	}
+};
+tree1.onClick=function(item){
+	if(item.data && item.data.onclick){
+		item.data.onclick.call(item.data);
+	}
+};
+
+var tree2=new sky.tree.MenuTree({'lines':true});
+var c=new sky.Container("tree2");
+c.add(tree2);
+var loadUrlItem=function(node,id){
+	var loading=Sky.createDiv("s-loading",node.dom);
+	node.status=1;
+	Sky.get("pid-"+id+".json",function(data){
+		loading.parentNode.removeChild(loading);
+		for(var i=0;i<data.length;i++){
+			if(data[i].parentId==id){
+				var isParent=!!data[i].hasChild;
+				var icon=isParent?"folder":"page-white";
+				var item=new sky.tree.TreeItem({'icon':icon,'title':data[i].title,'isParent':isParent,'link':data[i].href});
+				item.data=data[i];
+				node.addItem(item);
+			}
+		}
+		node.status=2;
+	},'json',function(){
+		loading.parentNode.removeChild(loading);
+		node.status=0;
+	});
+};
+loadUrlItem(tree2,0);
+tree2.afterExpand=function(item){
+	if(!item.status){
+		loadUrlItem(item,item.data.id);
+	}
+};
+</script>

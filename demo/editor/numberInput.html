@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+</head>
+
+<body>
+<br/>
+<br/>
+<br/>
+<table width="200">
+	<tr>
+		<td><input value="12" name="ddd" id="number1" type="number"/></td>
+	</tr>
+</table>
+<button type="button" onclick="alert(numberBox1.getValue())">获取值</button>
+<button type="button" onclick="alert(numberBox1.validate())">验证值</button>
+
+
+</body>
+</html>
+<script>
+	var numberBox1=new sky.editor.NumberInput("number1",{'height':20,'max':100,'title':"100以内的数字"});
+</script>

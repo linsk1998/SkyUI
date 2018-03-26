@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+	<style>
+	</style>
+</head>
+
+<body>
+<input type="button" value="弹窗" onclick="showDialog()"/>
+</body>
+</html>
+<script>
+
+var bb=new sky.ButtonBar({'btns':[{'label':'验证','onclick':function(){
+	alert(form1.validate());
+}},{'label':'提交','onclick':function(){
+	alert(form1.buildQuery());
+}}]})
+var dl=new sky.Dialog({'title':"可以调整大小",'buttonBar':bb,'resizable':{'minWidth':250,'minHeight':120}});
+var form1=new sky.form.AnchorForm();
+form1.addItem("userId","用户ID","TextInput",{},"必填");
+form1.addItem("userName","用户名","TextInput",{},"必填");
+form1.addItem("sex","性别","ComboBox",{'source':[{'id':"Boy",'name':"男"},{'id':"Girl",'name':"女"},{'id':"Other",'name':"保密"}]});
+form1.addItem("birthday","生日","DateInput",{});
+form1.addItem("remark","备注","TextArea",{'height':80});
+dl.panel.body.add(form1);
+function showDialog(){
+	dl.show();
+}
+</script>

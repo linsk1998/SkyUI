@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>无标题文档</title>
+	<link rel="stylesheet" type="text/css" href="../../skyui/SkyUI.css"/>
+	<script type="text/javascript" src="../../skyui/SkyUI.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dd.js"></script>
+	<script type="text/javascript" src="../../skyui/js/dialog.js"></script>
+	<script type="text/javascript" src="../../skyui/js/editor.js"></script>
+	<script type="text/javascript" src="../../skyui/js/picker.js"></script>
+	<script type="text/javascript" src="../../skyui/js/form.js"></script>
+	<style>
+	</style>
+</head>
+
+<body>
+	<form id="form1" style="width:500px;"></form>
+	<input type="button" value="提交" onclick="alert(form1.buildQuery())"/>
+	<input type="button" value="设置值" onclick="init()"/>
+</body>
+</html>
+<script type="text/javascript" src="../editor/gjdqBox.js"></script>
+<script>
+var form1=new sky.form.FlowForm({ 'editorWidth':270});
+form1.renderTo("form1");
+form1.addItem("userId","用户ID","TextInput",{'required':true},"必填");
+form1.addItem("userName","用户名","TextBox",{'required':true},"必填");
+form1.addItem("sex","性别","ComboBox",{'source':[{'id':"Boy",'name':"男"},{'id':"Girl",'name':"女"},{'id':"Other",'name':"保密"}]},"",{ 'editorWidth':80});
+form1.addItem("birthday","生日","DateInput",{},"",{ 'editorWidth':100});
+form1.addItem("GJDQ","国家",GJDQBox,{});
+form1.addItem("remark","备注","TextArea",{'height':80});
+form1.loadText("GJDQ","/php/getGJDQ.php");
+function init(){
+	form1.setData({
+		'userId':"tom",
+		'userName':"Tom",
+		'sex':"Boy",
+		'birthday':Date("2000/1/1"),
+		'GJDQ':100
+	});
+}
+</script>

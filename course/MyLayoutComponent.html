@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MyLayoutComponent</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		html,body{border:0; height:100%;}
+		h2{ margin-bottom:0;}
+		p{ margin:7px 0; font-size:14px;}
+		pre{ border-left:4px solid #00aa00; padding:8px; background:#f0f0f0; font-size:12px; line-height:20px; font-family:Courier New,"微软雅黑"; tab-size:4;-moz-tab-size:4;-o-tab-size:4;-webkit-tab-size:4;}
+		.reserved{ color:#00B; font-weight:bold;}
+		.string{ color:green; font-weight:bold;}
+		.comment{ color:gray; font-style:italic;}
+		.variable{ color:#607; font-weight:bold;}
+		.dom-object{ color:#909}
+		.member{ color:#a70;}
+		table{ border-collapse:collapse; background:#efefef; font-size:12px; min-width:500px;}
+		table th{ background:#d5d5d5;}
+		table th,table td{ border:1px solid #aaa;}
+	</style>
+</head>
+
+<body>
+<pre><span class="comment">//声明一个类</span>
+<span class="reserved">var</span> <span class="variable">MyLayoutComponent</span>=<span class="reserved">function</span>(){
+	sky.Component.<span class="member">call</span>(<span class="reserved">this</span>);<span class="comment">//继承Component</span>
+	<span class="comment">//dom属性</span>
+	<span class="reserved">this</span>.dom=<span class="dom-object">document</span>.<span class="member">createElement</span>(<span class="string">"div"</span>);
+	<span class="comment">//内部变量</span>
+	<span class="reserved">var</span> <span class="variable">head</span>=<span class="dom-object">document</span>.<span class="member">createElement</span>(<span class="string">"div"</span>);
+	<span class="variable">head</span>.<span class="dom-object">style</span>.<span class="member">height</span>=<span class="string">"100px"</span>;
+	<span class="reserved">var</span> <span class="variable">body</span>=<span class="dom-object">document</span>.<span class="member">createElement</span>(<span class="string">"div"</span>);
+	<span class="reserved">this</span>.dom.<span class="member">appendChild</span>(<span class="variable">head</span>);
+	<span class="reserved">this</span>.dom.<span class="member">appendChild</span>(<span class="variable">body</span>);
+	<span class="reserved">var</span> <span class="variable">self</span>=<span class="reserved">this</span>;<span class="comment">//什么这个变量是为了在别的函数里面引用当前对象</span>
+	<span class="comment">//自定义属性</span>
+	<span class="reserved">this</span>.hd=<span class="dom-object">new</span> sky.Comtainer(<span class="variable">head</span>);
+	<span class="reserved">this</span>.bd=<span class="dom-object">new</span> sky.Comtainer(<span class="variable">body</span>);
+	<span class="comment">//重写renderTo方法</span>
+	<span class="reserved">this</span>.renderTo=<span class="reserved">function</span>(<span class="variable">wrap</span>){
+		<span class="variable">wrap</span>=<span class="variable">Sky</span>(wrap);<span class="comment">//这样可以传入id值</span>
+		wrap.<span class="member">appendChild</span>(<span class="reserved">this</span>.dom);
+		<span class="reserved">if</span>(<span class="reserved">this</span>.container){
+			<span class="reserved">this</span>.container.<span class="member">after</span>(<span class="string">'resize'</span>,<span class="variable">refreshPosition</span>);
+		}
+	};
+	<span class="comment">//重写remove方法</span>
+	<span class="reserved">this</span>.remove=<span class="reserved">function</span>(){
+		<span class="reserved">this</span>.dom.<span class="member">parentNode</span>.<span class="member">removeChild</span>(<span class="reserved">this</span>.dom);
+		<span class="reserved">if</span>(<span class="reserved">this</span>.container){
+			<span class="reserved">this</span>.container.<span class="member">removeListener</span>(<span class="string">'resize'</span>,<span class="variable">refreshPosition</span>);
+		}
+	};
+	<span class="comment">//这个函数用来监听container大小变化的回调函数</span>
+	<span class="reserved">function</span> <span class="variable">refreshPosition</span>(){
+		<span class="comment">//这里调整位置</span>
+		<span class="comment">//这里的this是contaner</span>
+		if(<span class="variable">self</span>.bd.<span class="member">dispatchOnEvent</span>()){
+			<span class="variable">body</span>.<span class="dom-object">style</span>.<span class="member">height</span>=(<span class="reserved">this</span>.clientHeight-100)+<span class="string">"px"</span>;
+			<span class="variable">self</span>.bd.<span class="member">dispatchAfterEvent</span>();
+		}
+	}
+};</pre>
+</body>
+</html>
